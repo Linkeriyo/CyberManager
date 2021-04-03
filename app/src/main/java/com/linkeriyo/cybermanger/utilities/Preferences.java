@@ -52,4 +52,20 @@ public class Preferences {
     public static String getToken(){
         return getSharedPreferences().getString(Tags.TOKEN, null);
     }
+
+    public static void setEmail(String email) {
+        setString(Tags.EMAIL, email);
+    }
+
+    public static String getEmail() {
+        return getSharedPreferences().getString(Tags.EMAIL, null);
+    }
+
+    public static void setUsername(String username) {
+        setString(Tags.USERNAME, username);
+    }
+
+    public static String getUserName() {
+        return getSharedPreferences().getString(Tags.USERNAME, null);
+    }
 }
