@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.databinding.ActivityMainBinding;
+import com.linkeriyo.cybermanger.requests.UserRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkToken() {
         if (Preferences.getToken() == null) {
             userLoggingIn = true;
-            startActivityForResult(new Intent(this, LoginActivity.class), Tags.RQ_LOGIN);
+            startLoginActivity();
         } else {
             initLayout();
         }
@@ -63,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding.tvLogout.setOnClickListener(v -> {
             Toast.makeText(MainActivity.this, "logout", Toast.LENGTH_SHORT).show();
+            UserRequests.logout(this, Preferences.getToken());
         });
+    }
+
+    public void startLoginActivity() {
+        startActivityForResult(new Intent(this, LoginActivity.class), Tags.RQ_LOGIN);
     }
 }

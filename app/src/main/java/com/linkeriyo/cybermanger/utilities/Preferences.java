@@ -15,6 +15,12 @@ public class Preferences {
         return context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
     }
 
+    public static void removeToken() {
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
+        editor.remove(Tags.TOKEN);
+        editor.apply();
+    }
+
     public static void setString(String key, String value){
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.putString(key,value);

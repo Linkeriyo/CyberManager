@@ -8,6 +8,6 @@ public class Tags {
             USERNAME = "username",
             PASSWORD = "password",
             RESULT = "result",
-            OK_STRING = "ok",
+            OK = "ok",
             EMAIL = "email";
 }
