@@ -18,4 +18,15 @@ public class JSONTemplates {
         return json;
     }
 
+    public static JSONObject createSignUpJSON(final String username, final String email, final String password) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Tags.USERNAME, username);
+            json.put(Tags.EMAIL, email);
+            json.put(Tags.PASSWORD, password);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+        return json;
+    }
 }

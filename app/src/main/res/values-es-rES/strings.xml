@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">Iniciar sesión</string>
+    <string name="password">Contraseña</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="username_or_password_empty">El nombre de usuario o la contraseña están vacíos.</string>
+    <string name="username_empty">El nombre de usuario está vacío.</string>
+    <string name="password_empty">La contraseña está vacía.</string>
+    <string name="sample_text">soy solo un texto de ejemplo :D</string>
+    <string name="log_out">Cerrar sesión</string>
+    <string name="not_a_member">¿No tienes cuenta?</string>
+    <string name="sign_up">Regsitrarse</string>
+    <string name="password_again">Confirma tu contraseña</string>
+    <string name="already_a_member">¿Ya eres miembro?</string>
+</resources>

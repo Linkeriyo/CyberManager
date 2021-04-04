@@ -1,12 +1,19 @@
 <resources>
-    <string name="app_name">CyberManager</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login">Iniciar sesión</string>
-    <string name="password">Contraseña</string>
-    <string name="user">Usuario</string>
-    <string name="user_or_password_empty">El usuario o la contraseña están vacíos.</string>
-    <string name="username_empty">El usuario está vacío.</string>
-    <string name="password_empty">La contraseña está vacía.</string>
+    <string name="app_name" translatable="false">CyberManager</string>
+    <string name="login">Log in</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="username_or_password_empty">Username or password are empty.</string>
+    <string name="username_empty">Username is empty.</string>
+    <string name="password_empty">Password is empty.</string>
     <string name="sample_text">im just a sample text :D</string>
     <string name="log_out">Log out</string>
+    <string name="not_a_member">Not a member? </string>
+    <string name="sign_up">Sign up</string>
+    <string name="password_again">Confirm password</string>
+    <string name="already_a_member">Already a member?</string>
+    <string name="passwords_dont_match">Passwords don\'t match.</string>
+    <string name="passwordagain_empty">Please, confirm your password.</string>
+    <string name="email">Email</string>
+    <string name="email_empty">Email is empty.</string>
 </resources>

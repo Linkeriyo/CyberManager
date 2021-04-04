@@ -1,40 +1,47 @@
 package com.linkeriyo.cybermanger.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.activities.LoginActivity;
+import com.linkeriyo.cybermanger.databinding.FragmentLoginBinding;
 import com.linkeriyo.cybermanger.requests.UserRequests;
 
 import static com.linkeriyo.cybermanger.utilities.Functions.stringIsNullOrEmpty;
 
 public class LoginFragment extends Fragment {
 
-    Button bt_login;
-    TextInputEditText et_username, et_password;
-    Activity activity;
+    LoginActivity loginActivity;
+    FragmentLoginBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = getActivity();
+        loginActivity = (LoginActivity) getActivity();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
@@ -44,24 +51,25 @@ public class LoginFragment extends Fragment {
     }
 
     private void initViews() {
-        bt_login = activity.findViewById(R.id.bt_login);
-        et_username = activity.findViewById(R.id.et_username);
-        et_password = activity.findViewById(R.id.et_password);
+        binding.btLogin.setOnClickListener(v -> login());
 
-        bt_login.setOnClickListener(v -> login());
+        binding.tvNotAMember2.setOnClickListener(v -> {
+            NavDirections action = LoginFragmentDirections.actionMainLoginFragmentToRegisterFragment();
+            Navigation.findNavController(v).navigate(action);
+        });
     }
 
     private void login() {
-        String username = et_username.getText().toString();
-        String password = et_password.getText().toString();
+        String username = binding.etUsername.getText().toString();
+        String password = binding.etPassword.getText().toString();
         if (!stringIsNullOrEmpty(username) && !stringIsNullOrEmpty(password)) {
-            UserRequests.login(activity, username, password);
+            UserRequests.login(loginActivity, username, password);
         } else if (!stringIsNullOrEmpty(username)) {
-            Toast.makeText(activity, R.string.password_empty, Toast.LENGTH_SHORT).show();
+            Toast.makeText(loginActivity, R.string.password_empty, Toast.LENGTH_SHORT).show();
         } else if (!stringIsNullOrEmpty(password)) {
-            Toast.makeText(activity, R.string.username_empty, Toast.LENGTH_SHORT).show();
+            Toast.makeText(loginActivity, R.string.username_empty, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(activity, R.string.user_or_password_empty, Toast.LENGTH_SHORT).show();
+            Toast.makeText(loginActivity, R.string.username_or_password_empty, Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -16,4 +16,9 @@ public interface UserService {
     @POST("users/logout/")
     @FormUrlEncoded
     Call<String> logout(@Field("token") String token);
+
+    @POST("users/signup/")
+    @FormUrlEncoded
+    Call<String> signUp(@Field("data") JSONObject data);
+
 }
