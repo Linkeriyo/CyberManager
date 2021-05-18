@@ -15,13 +15,13 @@ import com.linkeriyo.cybermanger.utilities.Tags;
 public class MainActivity extends AppCompatActivity {
 
     boolean userLoggingIn = false;
+    boolean userFillingExtraData = false;
     ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        checkToken();
     }
 
     @Override
@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         userLoggingIn = false;
                     }
+                    break;
+                case Tags.RQ_EXTRA_DATA:
+                    userFillingExtraData = false;
                     break;
             }
         }
@@ -53,11 +56,15 @@ public class MainActivity extends AppCompatActivity {
             userLoggingIn = true;
             startLoginActivity();
         } else {
-            initLayout();
+            checkUser();
         }
     }
 
-    private void initLayout() {
+    private void checkUser() {
+        UserRequests.checkUserExtraData(this, Preferences.getToken(), Preferences.getUsername());
+    }
+
+    public void initLayout() {
         setContentView(binding.getRoot());
 
         binding.tvLogout.setOnClickListener(v -> {
@@ -68,5 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startLoginActivity() {
         startActivityForResult(new Intent(this, LoginActivity.class), Tags.RQ_LOGIN);
+    }
+
+    public void startExtraDataActivity() {
+        startActivityForResult(new Intent(this, ExtraDataActivity.class), Tags.RQ_EXTRA_DATA);
     }
 }
