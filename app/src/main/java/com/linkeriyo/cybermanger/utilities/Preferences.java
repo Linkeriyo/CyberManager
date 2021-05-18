@@ -71,7 +71,7 @@ public class Preferences {
         setString(Tags.USERNAME, username);
     }
 
-    public static String getUserName() {
+    public static String getUsername() {
         return getSharedPreferences().getString(Tags.USERNAME, null);
     }
 }

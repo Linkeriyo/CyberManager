@@ -1,0 +1,17 @@
+package com.linkeriyo.cybermanger.activities;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
+
+import com.linkeriyo.cybermanger.R;
+
+public class ExtraDataActivity extends Activity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_extra_data);
+    }
+}
