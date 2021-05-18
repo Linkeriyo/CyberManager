@@ -52,14 +52,8 @@ public class SignUpFragment extends Fragment {
     }
 
     private void initViews() {
-        binding.btSignUp.setOnClickListener(v -> {
-            signUp();
-        });
-
-        binding.tvNotAMember2.setOnClickListener(v -> {
-            NavDirections action = SignUpFragmentDirections.actionRegisterFragmentToMainLoginFragment2();
-            Navigation.findNavController(v).navigate(action);
-        });
+        binding.btSignUp.setOnClickListener(v -> signUp());
+        binding.tvNotAMember2.setOnClickListener(v -> navigateToLoginFragment());
     }
 
     private void signUp() {
@@ -81,7 +75,12 @@ public class SignUpFragment extends Fragment {
         } else if (!password.equals(passwordAgain)) {
             Toast.makeText(activity, R.string.passwords_dont_match, Toast.LENGTH_SHORT).show();
         } else {
-            UserRequests.signup(activity, username, email, password);
+            UserRequests.signup(this, username, email, password);
         }
+    }
+
+    public void navigateToLoginFragment() {
+        NavDirections action = SignUpFragmentDirections.actionRegisterFragmentToMainLoginFragment2();
+        Navigation.findNavController(binding.getRoot()).navigate(action);
     }
 }

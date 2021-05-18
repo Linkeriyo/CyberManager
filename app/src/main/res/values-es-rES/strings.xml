@@ -12,4 +12,5 @@
     <string name="sign_up">Regsitrarse</string>
     <string name="password_again">Confirma tu contraseña</string>
     <string name="already_a_member">¿Ya eres miembro?</string>
+    <string name="account_created">The account was created</string>
 </resources>

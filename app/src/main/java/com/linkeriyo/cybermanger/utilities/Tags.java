@@ -3,7 +3,7 @@ package com.linkeriyo.cybermanger.utilities;
 public class Tags {
     public static final int RQ_LOGIN = 100, RS_OK = 0;
 
-    public static final String SERVIDOR = "http://192.168.1.38:6780/";
+    public static final String SERVIDOR = "http://192.168.1.37:8000/";
     public static final String TOKEN = "token";
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
@@ -23,4 +23,6 @@ public class Tags {
     public static final String DESCRIPTION = "description";
     public static final String ZIP_CODE = "zip_code";
     public static final String PRODUCT_TYPE = "product_type";
+    public static final String COMPUTERS = "computers";
+    public static final String HAS_EXTRA_DATA = "has_extra_data";
 }

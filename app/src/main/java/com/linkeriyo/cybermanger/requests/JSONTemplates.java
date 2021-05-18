@@ -29,4 +29,15 @@ public class JSONTemplates {
         }
         return json;
     }
+
+    public static JSONObject createCheckExtraDataJSON(final String token, final String username) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Tags.TOKEN, token);
+            json.put(Tags.USERNAME, username);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+        return json;
+    }
 }

@@ -21,4 +21,11 @@ public interface UserService {
     @FormUrlEncoded
     Call<String> signUp(@Field("data") JSONObject data);
 
+    @POST("users/get_computers")
+    @FormUrlEncoded
+    Call<String> getComputers(@Field("data") String token);
+
+    @POST("users/check_user_extra_data")
+    @FormUrlEncoded
+    Call<String> checkUserExtraData(@Field("data") JSONObject data);
 }
