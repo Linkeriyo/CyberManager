@@ -15,6 +15,18 @@ public class Preferences {
         return context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
     }
 
+    public static void removePreference(String key) {
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
+        editor.remove(key);
+        editor.apply();
+    }
+
+    public static void notifyLoggedOut() {
+        removePreference(Tags.TOKEN);
+        removePreference(Tags.EMAIL);
+        removePreference(Tags.USERNAME);
+    }
+
     public static void removeToken() {
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.remove(Tags.TOKEN);
@@ -73,5 +85,13 @@ public class Preferences {
 
     public static String getUsername() {
         return getSharedPreferences().getString(Tags.USERNAME, null);
+    }
+
+    public static String getSelectedCafe() {
+        return getSharedPreferences().getString(Tags.SELECTED_CAFE, null);
+    }
+
+    public static void setSelectedCafe(String value) {
+        setString(Tags.SELECTED_CAFE, value);
     }
 }

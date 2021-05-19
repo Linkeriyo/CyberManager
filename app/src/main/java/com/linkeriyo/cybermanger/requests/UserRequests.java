@@ -82,7 +82,7 @@ public class UserRequests {
                     JSONObject jsonResponse = new JSONObject(response.body());
 
                     if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
-                        Preferences.removeToken();
+                        Preferences.notifyLoggedOut();
                         mainActivity.startLoginActivity();
                     } else {
                         Toast.makeText(mainActivity, "couldn't logout", Toast.LENGTH_SHORT).show();
@@ -187,7 +187,7 @@ public class UserRequests {
                     JSONObject jsonResponse = new JSONObject(response.body());
                     if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
                         if (jsonResponse.getBoolean(Tags.HAS_EXTRA_DATA)) {
-                            mainActivity.initLayout();
+                            mainActivity.checkSelectedCafe();
                             Log.v(TAG, jsonResponse.getString(Tags.USER_EXTRA_DATA));
                         } else {
                             mainActivity.startExtraDataActivity();

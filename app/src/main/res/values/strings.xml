@@ -27,4 +27,7 @@
     <string name="province">Province</string>
     <string name="zip_code">Zip code</string>
     <string name="data_set">Data was set successfully.</string>
+    <string name="select_cafe">Select cafe</string>
+    <string name="add_cafe">Add cafe</string>
+    <string name="scan_code">Scan your code</string>
 </resources>

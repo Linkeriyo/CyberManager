@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.linkeriyo.cybermanger.databinding.ActivityMainBinding;
+import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.requests.UserRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.linkeriyo.cybermanger.utilities.Tags;
@@ -16,7 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
     boolean userLoggingIn = false;
     boolean userFillingExtraData = false;
+    boolean userSeletingCafe = false;
     ActivityMainBinding binding;
+
+    CyberCafe selectedCafe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +31,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Tags.RS_OK) {
-            switch (requestCode) {
-                case Tags.RQ_LOGIN:
-                    if (Preferences.getToken() == null) {
+
+        switch (requestCode) {
+            case Tags.RQ_LOGIN:
+                if (Preferences.getToken() == null) {
+                    finish();
+                } else {
+                    userLoggingIn = false;
+                }
+                break;
+            case Tags.RQ_EXTRA_DATA:
+                userFillingExtraData = false;
+                break;
+            case Tags.RQ_SELECT_CAFE:
+                userSeletingCafe = false;
+                switch (resultCode) {
+                    case Tags.RS_LOGOUT:
+                        logout();
+                        break;
+                    case Tags.RS_ERROR:
                         finish();
-                    } else {
-                        userLoggingIn = false;
-                    }
-                    break;
-                case Tags.RQ_EXTRA_DATA:
-                    userFillingExtraData = false;
-                    break;
-            }
+                }
         }
     }
 
@@ -48,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (!userLoggingIn) {
             checkToken();
+        } else {
+            checkUser();
         }
     }
 
@@ -63,12 +77,23 @@ public class MainActivity extends AppCompatActivity {
         UserRequests.checkUserExtraData(this, Preferences.getToken(), Preferences.getUsername());
     }
 
+    public void checkSelectedCafe() {
+        String selectedCafeId = Preferences.getSelectedCafe();
+
+        if (selectedCafeId == null) {
+            startActivityForResult(new Intent(this, SelectCafeActivity.class), Tags.RQ_SELECT_CAFE);
+            userSeletingCafe = true;
+        } else {
+            // pedir cibercafe según selectedCafeId
+            initLayout();
+        }
+    }
+
     public void initLayout() {
         setContentView(binding.getRoot());
 
         binding.tvLogout.setOnClickListener(v -> {
-            Toast.makeText(MainActivity.this, "logout", Toast.LENGTH_SHORT).show();
-            UserRequests.logout(this, Preferences.getToken());
+            logout();
         });
     }
 
@@ -80,5 +105,9 @@ public class MainActivity extends AppCompatActivity {
     public void startExtraDataActivity() {
         startActivityForResult(new Intent(this, ExtraDataActivity.class), Tags.RQ_EXTRA_DATA);
         userFillingExtraData = true;
+    }
+
+    public void logout() {
+        UserRequests.logout(this, Preferences.getToken());
     }
 }
