@@ -14,9 +14,17 @@
     <string name="already_a_member">Already a member?</string>
     <string name="passwords_dont_match">Passwords don\'t match.</string>
     <string name="passwordagain_empty">Please, confirm your password.</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="email_empty">Email is empty.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="account_created">The account was created</string>
+    <string name="complete_your_profile">Complete your profile</string>
+    <string name="confirm">Confirm</string>
+    <string name="name">Name</string>
+    <string name="phno">Phone number</string>
+    <string name="surname">Surname</string>
+    <string name="address">Address line</string>
+    <string name="city">City</string>
+    <string name="province">Province</string>
+    <string name="zip_code">Zip code</string>
+    <string name="data_set">Data was set successfully.</string>
 </resources>

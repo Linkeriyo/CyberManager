@@ -40,4 +40,27 @@ public class JSONTemplates {
         }
         return json;
     }
+
+    public static JSONObject createSetExtraDataJSON(final String token, final String username,
+                                                    final String name, final String surname,
+                                                    final String phono, final String address,
+                                                    final String city, final String province,
+                                                    final String zipCode
+    ) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Tags.TOKEN, token);
+            json.put(Tags.USERNAME, username);
+            json.put(Tags.NAME, name);
+            json.put(Tags.SURNAME, surname);
+            json.put(Tags.PHONO, phono);
+            json.put(Tags.ADDRESS, address);
+            json.put(Tags.CITY, city);
+            json.put(Tags.PROVINCE, province);
+            json.put(Tags.ZIP_CODE, zipCode);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+        return json;
+    }
 }

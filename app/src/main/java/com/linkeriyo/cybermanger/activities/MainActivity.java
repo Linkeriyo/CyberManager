@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkToken() {
         if (Preferences.getToken() == null) {
-            userLoggingIn = true;
             startLoginActivity();
         } else {
             checkUser();
@@ -75,9 +74,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void startLoginActivity() {
         startActivityForResult(new Intent(this, LoginActivity.class), Tags.RQ_LOGIN);
+        userLoggingIn = true;
     }
 
     public void startExtraDataActivity() {
         startActivityForResult(new Intent(this, ExtraDataActivity.class), Tags.RQ_EXTRA_DATA);
+        userFillingExtraData = true;
     }
 }

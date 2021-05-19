@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.activities.ExtraDataActivity;
 import com.linkeriyo.cybermanger.activities.LoginActivity;
 import com.linkeriyo.cybermanger.activities.MainActivity;
 import com.linkeriyo.cybermanger.fragments.ComputersFragment;
@@ -191,6 +192,8 @@ public class UserRequests {
                         } else {
                             mainActivity.startExtraDataActivity();
                         }
+                    } else if (jsonResponse.getString(Tags.MESSAGE).contains("token is null")) {
+                        mainActivity.startLoginActivity();
                     }
 
                 } catch (JSONException e) {
@@ -200,7 +203,47 @@ public class UserRequests {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
 
+    public static void setUserExtraData(final ExtraDataActivity extraDataActivity,
+                                        final String token, final String username,
+                                        final String name, final String surname,
+                                        final String phono, final String address,
+                                        final String city, final String province,
+                                        final String zipCode
+    ) {
+        Call<String> call = RetrofitClient.getClient()
+                .create(UserService.class)
+                .setUserExtraData(JSONTemplates.createSetExtraDataJSON(
+                        token, username, name, surname, phono, address, city, province, zipCode
+                ));
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    Log.v(TAG, "set_user_extra_data response");
+                    Log.v(TAG, response.body() + "");
+
+                    JSONObject jsonResponse = new JSONObject(response.body());
+                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        Toast.makeText(extraDataActivity,
+                                extraDataActivity.getString(R.string.data_set),
+                                Toast.LENGTH_SHORT
+                        ).show();
+                        extraDataActivity.finish();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
             }
         });
     }

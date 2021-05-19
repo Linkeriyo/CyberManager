@@ -10,7 +10,7 @@ public class CyberCafe {
     private String pk;
     private String name;
     private String description;
-    private String telephoneNumber;
+    private String phono;
     private String address;
     private String city;
     private String province;
@@ -21,7 +21,7 @@ public class CyberCafe {
         pk = "";
         name = "";
         description = "";
-        telephoneNumber = "";
+        phono = "";
         address = "";
         city = "";
         province = "";
@@ -33,7 +33,7 @@ public class CyberCafe {
         pk = json.getString(Tags.PK);
         name = json.getString(Tags.NAME);
         description = json.getString(Tags.DESCRIPTION);
-        telephoneNumber = json.getString(Tags.TELEPHONE_NUMBER);
+        phono = json.getString(Tags.PHONO);
         address = json.getString(Tags.ADDRESS);
         city = json.getString(Tags.CITY);
         province = json.getString(Tags.PROVINCE);
@@ -46,7 +46,7 @@ public class CyberCafe {
         json.put(Tags.PK, pk);
         json.put(Tags.NAME, name);
         json.put(Tags.DESCRIPTION, description);
-        json.put(Tags.TELEPHONE_NUMBER, telephoneNumber);
+        json.put(Tags.PHONO, phono);
         json.put(Tags.ADDRESS, address);
         json.put(Tags.CITY, city);
         json.put(Tags.PROVINCE, province);
@@ -79,12 +79,12 @@ public class CyberCafe {
         this.description = description;
     }
 
-    public String getTelephoneNumber() {
-        return telephoneNumber;
+    public String getPhono() {
+        return phono;
     }
 
-    public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
+    public void setPhono(String phono) {
+        this.phono = phono;
     }
 
     public String getAddress() {

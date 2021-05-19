@@ -12,5 +12,13 @@
     <string name="sign_up">Regsitrarse</string>
     <string name="password_again">Confirma tu contraseña</string>
     <string name="already_a_member">¿Ya eres miembro?</string>
-    <string name="account_created">The account was created</string>
+    <string name="account_created">Se ha creado la cuenta</string>
+    <string name="complete_your_profile">Completa tu perfil</string>
+    <string name="confirm">Confirmar</string>
+    <string name="name">Nombre</string>
+    <string name="phno">Número de teléfono</string>
+    <string name="surname">Surname</string>
+    <string name="passwords_dont_match">Las contraseñas no coinciden.</string>
+    <string name="passwordagain_empty">Por favor, confirma tu contraseña.</string>
+    <string name="email_empty">El email está vacío.</string>
 </resources>

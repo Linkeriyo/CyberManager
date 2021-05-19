@@ -28,4 +28,8 @@ public interface UserService {
     @POST("users/check_user_extra_data/")
     @FormUrlEncoded
     Call<String> checkUserExtraData(@Field("data") JSONObject data);
+
+    @POST("users/set_user_extra_data/")
+    @FormUrlEncoded
+    Call<String> setUserExtraData(@Field("data") JSONObject data);
 }

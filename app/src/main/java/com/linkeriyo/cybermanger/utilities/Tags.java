@@ -13,7 +13,7 @@ public class Tags {
     public static final String PK = "pk";
     public static final String NAME = "name";
     public static final String SURNAME = "surname";
-    public static final String TELEPHONE_NUMBER = "telephone_number";
+    public static final String PHONO = "phono";
     public static final String ADDRESS = "address";
     public static final String CITY = "city";
     public static final String PROVINCE = "province";
@@ -26,4 +26,5 @@ public class Tags {
     public static final String COMPUTERS = "computers";
     public static final String HAS_EXTRA_DATA = "has_extra_data";
     public static final String USER_EXTRA_DATA = "user_extra_data";
+    public static final String MESSAGE = "message";
 }

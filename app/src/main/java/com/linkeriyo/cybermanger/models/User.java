@@ -12,7 +12,7 @@ public class User {
     private String email;
     private String name;
     private String surname;
-    private String telephoneNumber;
+    private String phono;
     private String address;
     private String city;
     private String province;
@@ -24,7 +24,7 @@ public class User {
         email = "";
         name = "";
         surname = "";
-        telephoneNumber = "";
+        phono = "";
         address = "";
         city = "";
         province = "";
@@ -37,7 +37,7 @@ public class User {
         email = json.getString(Tags.EMAIL);
         name = json.getString(Tags.NAME);
         surname = json.getString(Tags.SURNAME);
-        telephoneNumber = json.getString(Tags.TELEPHONE_NUMBER);
+        phono = json.getString(Tags.PHONO);
         address = json.getString(Tags.ADDRESS);
         city = json.getString(Tags.CITY);
         province = json.getString(Tags.PROVINCE);
@@ -51,7 +51,7 @@ public class User {
         json.put(Tags.NAME, name);
         json.put(Tags.EMAIL, email);
         json.put(Tags.SURNAME, surname);
-        json.put(Tags.TELEPHONE_NUMBER, telephoneNumber);
+        json.put(Tags.PHONO, phono);
         json.put(Tags.ADDRESS, address);
         json.put(Tags.CITY, city);
         json.put(Tags.PROVINCE, province);
@@ -99,12 +99,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getTelephoneNumber() {
-        return telephoneNumber;
+    public String getPhono() {
+        return phono;
     }
 
-    public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
+    public void setPhono(String phono) {
+        this.phono = phono;
     }
 
     public String getAddress() {
