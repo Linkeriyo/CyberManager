@@ -32,4 +32,8 @@ public interface UserService {
     @POST("users/set_user_extra_data/")
     @FormUrlEncoded
     Call<String> setUserExtraData(@Field("data") JSONObject data);
+
+    @POST("users/add_cybercafe_to_user/")
+    @FormUrlEncoded
+    Call<String> addCybercafeToUser(@Field("data") JSONObject data);
 }

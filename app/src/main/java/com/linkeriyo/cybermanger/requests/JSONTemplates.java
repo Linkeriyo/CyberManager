@@ -1,5 +1,6 @@
 package com.linkeriyo.cybermanger.requests;
 
+import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
 import org.json.JSONException;
@@ -58,6 +59,17 @@ public class JSONTemplates {
             json.put(Tags.CITY, city);
             json.put(Tags.PROVINCE, province);
             json.put(Tags.ZIP_CODE, zipCode);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+        return json;
+    }
+
+    public static JSONObject createAddCybercafeToUserJSON(String token, CyberCafe cyberCafe) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Tags.TOKEN, token);
+            json.put(Tags.BUSINESS, cyberCafe.toJSON());
         } catch (JSONException exception) {
             exception.printStackTrace();
         }

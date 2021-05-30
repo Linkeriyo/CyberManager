@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#9C6D07</color>
     <color name="customWhite">#F9F9F9</color>
     <color name="customBlack">#161414</color>
-    <color name="colorTextPure">@color/customBlack</color>
-    <color name="colorTextTransparent">#B2161414</color>
+    <color name="colorTextPure">@color/customWhite</color>
+    <color name="colorTextTransparent">#99F9F9F9</color>
 </resources>

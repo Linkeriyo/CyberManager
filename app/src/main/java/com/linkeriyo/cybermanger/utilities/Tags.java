@@ -5,11 +5,14 @@ public class Tags {
     public static final int RQ_EXTRA_DATA = 101;
     public static final int RQ_SCAN_QR = 102;
     public static final int RQ_SELECT_CAFE = 103;
+
+    public static final int RQ_CAM_PERMISSION = 200;
+
     public static final int RS_ERROR = -1;
     public static final int RS_OK = 1;
     public static final int RS_LOGOUT = 2;
 
-    public static final String SERVIDOR = "http://192.168.1.37:8000/";
+    public static final String SERVIDOR = "http://192.168.1.36:8000/";
     public static final String TOKEN = "token";
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
@@ -34,6 +37,7 @@ public class Tags {
     public static final String USER_EXTRA_DATA = "user_extra_data";
     public static final String MESSAGE = "message";
     public static final String SELECTED_CAFE = "selected_cafe";
-
-
+    public static final String BUSINESS = "business";
+    public static final String BUSINESS_ID = "business_id";
+    public static final String IMAGE = "image";
 }

@@ -16,6 +16,8 @@ public class CyberCafe {
     private String province;
     private String email;
     private String zipCode;
+    private String image;
+    private String businessId;
 
     public CyberCafe() {
         pk = "";
@@ -27,6 +29,8 @@ public class CyberCafe {
         province = "";
         email = "";
         zipCode = "";
+        image = "";
+        businessId = "";
     }
 
     public CyberCafe(JSONObject json) throws JSONException {
@@ -39,6 +43,8 @@ public class CyberCafe {
         province = json.getString(Tags.PROVINCE);
         email = json.getString(Tags.EMAIL);
         zipCode = json.getString(Tags.ZIP_CODE);
+        image = json.getString(Tags.IMAGE);
+        businessId = json.getString(Tags.BUSINESS_ID);
     }
 
     public JSONObject toJSON() throws JSONException {
@@ -52,7 +58,22 @@ public class CyberCafe {
         json.put(Tags.PROVINCE, province);
         json.put(Tags.EMAIL, email);
         json.put(Tags.ZIP_CODE, zipCode);
+        json.put(Tags.IMAGE, image);
+        json.put(Tags.BUSINESS_ID, businessId);
         return json;
+    }
+
+    public void fromJSON(JSONObject json) throws JSONException {
+        pk = json.getString(Tags.PK);
+        name = json.getString(Tags.NAME);
+        description = json.getString(Tags.DESCRIPTION);
+        phono = json.getString(Tags.PHONO);
+        address = json.getString(Tags.ADDRESS);
+        city = json.getString(Tags.CITY);
+        province = json.getString(Tags.PROVINCE);
+        email = json.getString(Tags.EMAIL);
+        zipCode = json.getString(Tags.ZIP_CODE);
+        businessId = json.getString(Tags.BUSINESS_ID);
     }
 
     public String getPk() {
@@ -125,5 +146,21 @@ public class CyberCafe {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
     }
 }

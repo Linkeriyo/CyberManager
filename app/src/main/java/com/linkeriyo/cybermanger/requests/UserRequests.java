@@ -8,9 +8,11 @@ import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.activities.ExtraDataActivity;
 import com.linkeriyo.cybermanger.activities.LoginActivity;
 import com.linkeriyo.cybermanger.activities.MainActivity;
+import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
 import com.linkeriyo.cybermanger.fragments.ComputersFragment;
 import com.linkeriyo.cybermanger.fragments.SignUpFragment;
 import com.linkeriyo.cybermanger.models.Computer;
+import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
@@ -238,6 +240,34 @@ public class UserRequests {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public static void addCybercafeToUser(final QRScannedDialog dialog, final String token, final CyberCafe cyberCafe) {
+        Call<String> call = RetrofitClient.getClient()
+                .create(UserService.class)
+                .addCybercafeToUser(JSONTemplates.createAddCybercafeToUserJSON(token, cyberCafe));
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    Log.v(TAG, "add_cybercafe_to_user response");
+                    Log.v(TAG, response.body() + "");
+
+                    JSONObject jsonResponse = new JSONObject(response.body());
+                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        dialog.dismiss();
+                    }
+                } catch (JSONException exception) {
+                    exception.printStackTrace();
                 }
             }
 

@@ -30,4 +30,7 @@
     <string name="select_cafe">Select cafe</string>
     <string name="add_cafe">Add cafe</string>
     <string name="scan_code">Scan your code</string>
+    <string name="no_cafes">You have not added any cafe yet, to add one use the button above.</string>
+    <string name="no_matches">No matches</string>
+    <string name="couldnt_find_cafe">Couldn\'t find any cafe with that ID.</string>
 </resources>
