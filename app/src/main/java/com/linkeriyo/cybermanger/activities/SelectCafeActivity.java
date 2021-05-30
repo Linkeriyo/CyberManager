@@ -7,14 +7,19 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.gms.vision.text.Line;
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.adapters.CybercafesAdapter;
 import com.linkeriyo.cybermanger.databinding.ActivitySelectCafeBinding;
 import com.linkeriyo.cybermanger.models.CyberCafe;
+import com.linkeriyo.cybermanger.requests.BusinessRequests;
 import com.linkeriyo.cybermanger.requests.UserRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.linkeriyo.cybermanger.utilities.Tags;
@@ -29,6 +34,7 @@ public class SelectCafeActivity extends Activity {
     private static final String TAG = "SelectCafeActivity";
     ActivitySelectCafeBinding binding;
     ArrayList<CyberCafe> cafes = new ArrayList<>();
+    CybercafesAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +67,13 @@ public class SelectCafeActivity extends Activity {
             return true;
         });
 
+        adapter = new CybercafesAdapter(this, cafes);
+        binding.rvCybercafes.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvCybercafes.setAdapter(adapter);
+
+        binding.swipeRefresh.setOnRefreshListener(() -> {
+            BusinessRequests.getBusinessesByUser(this, Preferences.getToken());
+        });
         refreshTextView();
     }
 
@@ -92,5 +105,19 @@ public class SelectCafeActivity extends Activity {
         } else {
             binding.tvNoCafes.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BusinessRequests.getBusinessesByUser(this, Preferences.getToken());
+    }
+
+    public void setCafes(ArrayList<CyberCafe> cafesList) {
+        cafes.clear();
+        cafes.addAll(cafesList);
+        binding.rvCybercafes.getAdapter().notifyDataSetChanged();
+        refreshTextView();
+        binding.swipeRefresh.setRefreshing(false);
     }
 }

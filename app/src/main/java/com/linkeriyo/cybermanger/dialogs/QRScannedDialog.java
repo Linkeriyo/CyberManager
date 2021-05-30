@@ -44,7 +44,7 @@ public class QRScannedDialog extends Dialog {
             System.out.println("dialog accepted");
 
             if (selectedCafe != null) {
-                UserRequests.addCybercafeToUser(Preferences.getToken(), selectedCafe);
+                UserRequests.addCybercafeToUser(this, Preferences.getToken(), selectedCafe);
             }
         });
 
@@ -63,19 +63,18 @@ public class QRScannedDialog extends Dialog {
             selectedCafe = cyberCafe;
 
             int nightModeFlags = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
             if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
                 Glide.with(getContext()).
                         load(cyberCafe.getImage()).
                         centerCrop().
                         placeholder(R.drawable.ic_action_name_night).
-                        into(binding.elementCybercafe.circularImageView);
+                        into(binding.elementCybercafe.civImage);
             } else {
                 Glide.with(getContext()).
                         load(cyberCafe.getImage()).
                         centerCrop().
                         placeholder(R.drawable.ic_action_name).
-                        into(binding.elementCybercafe.circularImageView);
+                        into(binding.elementCybercafe.civImage);
             }
 
             binding.elementCybercafe.tvName.setText(cyberCafe.getName());
