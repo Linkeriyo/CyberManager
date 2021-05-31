@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.databinding.ElementComputerBinding;
 import com.linkeriyo.cybermanger.dialogs.DialogGenerateQR;
 import com.linkeriyo.cybermanger.models.CyberCafe;
+import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
@@ -60,8 +62,13 @@ public class CybercafesAdapter extends RecyclerView.Adapter<CybercafesAdapter.Cy
 
         holder.tvName.setText(cafes.get(position).getName());
 
-        holder.itemView.setOnClickListener(v -> {
+        holder.ibShare.setOnClickListener(v -> {
             dialog.show(cafes.get(position));
+        });
+
+        holder.itemView.setOnClickListener(v -> {
+            Preferences.setSelectedCafe(cafes.get(position).getBusinessId());
+            activity.finish();
         });
     }
 
@@ -75,11 +82,13 @@ public class CybercafesAdapter extends RecyclerView.Adapter<CybercafesAdapter.Cy
 
         CircularImageView civImage;
         TextView tvName;
+        ImageButton ibShare;
 
         public CybercafeViewHolder(@NonNull View itemView) {
             super(itemView);
             civImage = itemView.findViewById(R.id.civ_image);
             tvName = itemView.findViewById(R.id.tv_name);
+            ibShare = itemView.findViewById(R.id.ib_share);
         }
     }
 }

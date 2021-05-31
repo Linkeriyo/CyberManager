@@ -25,6 +25,7 @@ public class Preferences {
         removePreference(Tags.TOKEN);
         removePreference(Tags.EMAIL);
         removePreference(Tags.USERNAME);
+        removePreference(Tags.SELECTED_CAFE);
     }
 
     public static void removeToken() {

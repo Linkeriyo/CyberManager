@@ -53,6 +53,8 @@ public class ScanQRActivity extends Activity {
     public void initLayout() {
         binding = ActivityScanQrBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.btClose.setOnClickListener(v -> finish());
     }
 
     public void initializeQRReader() {
