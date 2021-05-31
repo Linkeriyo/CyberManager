@@ -36,4 +36,8 @@ public interface UserService {
     @POST("users/add_cybercafe_to_user/")
     @FormUrlEncoded
     Call<String> addCybercafeToUser(@Field("data") JSONObject data);
+
+    @POST("users/remove_cybercafe_from_user/")
+    @FormUrlEncoded
+    Call<String> removeCybercafeFromUser(@Field("data") JSONObject data);
 }

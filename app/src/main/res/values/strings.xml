@@ -35,4 +35,7 @@
     <string name="couldnt_find_cafe">Couldn\'t find any cafe with that ID.</string>
     <string name="qr_code">QR code</string>
     <string name="scan_to_add">Scan this QR to add %1$s to your cafes</string>
+    <string name="already_added_cafe">That cafe was already added</string>
+    <string name="cafe_removed">Cafe removed successfully</string>
+    <string name="cafe_added">Cafe added successfully</string>
 </resources>

@@ -3,6 +3,7 @@ package com.linkeriyo.cybermanger.requests;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
 import com.linkeriyo.cybermanger.models.CyberCafe;
@@ -85,7 +86,6 @@ public class BusinessRequests {
                         for (int i = 0; i < jsonCafes.length(); i++) {
                             cafes.add(new CyberCafe(jsonCafes.getJSONObject(i)));
                         }
-                        System.out.println(cafes.get(0).toJSON());
                         activity.setCafes(cafes);
                     }
                 } catch (JSONException exception) {

@@ -18,9 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/scanner_foreground" />
+        android:src="@drawable/scanner_foreground" />
 
     <TextView
         android:id="@+id/tv_scan"
@@ -47,10 +48,10 @@
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
         android:tint="@color/customWhite"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_close_24"
-        android:contentDescription="TODO" />
+        android:src="@drawable/ic_baseline_close_24" />
 
     <ImageButton
         android:id="@+id/bt_write"
@@ -64,8 +65,9 @@
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
         android:tint="@color/customWhite"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_vertical_split_24" />
+        android:src="@drawable/ic_baseline_vertical_split_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,7 @@ import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.databinding.ElementComputerBinding;
 import com.linkeriyo.cybermanger.dialogs.DialogGenerateQR;
 import com.linkeriyo.cybermanger.models.CyberCafe;
+import com.linkeriyo.cybermanger.requests.UserRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -66,6 +67,10 @@ public class CybercafesAdapter extends RecyclerView.Adapter<CybercafesAdapter.Cy
             dialog.show(cafes.get(position));
         });
 
+        holder.ibRemove.setOnClickListener(v -> {
+            UserRequests.removeCybercafeFromUser(activity, Preferences.getToken(), cafes.get(position));
+        });
+
         holder.itemView.setOnClickListener(v -> {
             Preferences.setSelectedCafe(cafes.get(position).getBusinessId());
             activity.finish();
@@ -82,13 +87,14 @@ public class CybercafesAdapter extends RecyclerView.Adapter<CybercafesAdapter.Cy
 
         CircularImageView civImage;
         TextView tvName;
-        ImageButton ibShare;
+        ImageButton ibShare, ibRemove;
 
         public CybercafeViewHolder(@NonNull View itemView) {
             super(itemView);
             civImage = itemView.findViewById(R.id.civ_image);
             tvName = itemView.findViewById(R.id.tv_name);
             ibShare = itemView.findViewById(R.id.ib_share);
+            ibRemove = itemView.findViewById(R.id.ib_remove);
         }
     }
 }

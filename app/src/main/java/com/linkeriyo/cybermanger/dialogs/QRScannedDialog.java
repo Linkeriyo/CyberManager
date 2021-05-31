@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.activities.ScanQRActivity;
 import com.linkeriyo.cybermanger.databinding.DialogCheckQrBinding;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.requests.BusinessRequests;
@@ -22,10 +23,12 @@ public class QRScannedDialog extends Dialog {
     DialogCheckQrBinding binding;
     String qrValue;
     CyberCafe selectedCafe;
+    ScanQRActivity activity;
 
-    public QRScannedDialog(@NonNull Context context, String qrValue) {
-        super(context);
+    public QRScannedDialog(ScanQRActivity activity, String qrValue) {
+        super(activity);
         this.qrValue = qrValue;
+        this.activity = activity;
     }
 
     @Override
@@ -82,5 +85,11 @@ public class QRScannedDialog extends Dialog {
             binding.btAccept.setEnabled(true);
             binding.btAccept.setTextColor(getContext().getColor(R.color.colorTextPure));
         }
+    }
+
+    @Override
+    public void dismiss() {
+        activity.checkAgain();
+        super.dismiss();
     }
 }

@@ -128,4 +128,9 @@ public class ScanQRActivity extends Activity {
             dialog.show();
         });
     }
+
+    public void checkAgain() {
+        qrValue = null;
+        check = true;
+    }
 }

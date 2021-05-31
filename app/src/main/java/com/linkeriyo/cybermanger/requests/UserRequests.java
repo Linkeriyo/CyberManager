@@ -8,6 +8,8 @@ import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.activities.ExtraDataActivity;
 import com.linkeriyo.cybermanger.activities.LoginActivity;
 import com.linkeriyo.cybermanger.activities.MainActivity;
+import com.linkeriyo.cybermanger.activities.ScanQRActivity;
+import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
 import com.linkeriyo.cybermanger.fragments.ComputersFragment;
 import com.linkeriyo.cybermanger.fragments.SignUpFragment;
@@ -264,6 +266,11 @@ public class UserRequests {
 
                     JSONObject jsonResponse = new JSONObject(response.body());
                     if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        if (jsonResponse.getString(Tags.MESSAGE).contains("already added")) {
+                            Toast.makeText(dialog.getContext(), R.string.already_added_cafe, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(dialog.getContext(), R.string.cafe_added, Toast.LENGTH_SHORT).show();
+                        }
                         dialog.dismiss();
                     }
                 } catch (JSONException exception) {
@@ -274,6 +281,35 @@ public class UserRequests {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 t.printStackTrace();
+            }
+        });
+    }
+
+    public static void removeCybercafeFromUser(final SelectCafeActivity activity, final String token, final CyberCafe cyberCafe) {
+        Call<String> call = RetrofitClient.getClient()
+                .create(UserService.class)
+                .removeCybercafeFromUser(JSONTemplates.createAddCybercafeToUserJSON(token, cyberCafe));
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    Log.v(TAG, "remove_cybercafe_from_user response");
+                    Log.v(TAG, response.body() + "");
+
+                    JSONObject jsonResponse = new JSONObject(response.body());
+                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        BusinessRequests.getBusinessesByUser(activity, Preferences.getToken());
+                        Toast.makeText(activity, R.string.cafe_removed, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException exception) {
+                    exception.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
             }
         });
     }
