@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.databinding.ElementComputerBinding;
+import com.linkeriyo.cybermanger.dialogs.DialogGenerateQR;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -22,10 +23,12 @@ public class CybercafesAdapter extends RecyclerView.Adapter<CybercafesAdapter.Cy
 
     SelectCafeActivity activity;
     ArrayList<CyberCafe> cafes;
+    DialogGenerateQR dialog;
 
     public CybercafesAdapter(SelectCafeActivity activity, ArrayList<CyberCafe> cafes) {
         this.activity = activity;
         this.cafes = cafes;
+        dialog = new DialogGenerateQR(activity);
     }
 
     @NonNull
@@ -56,6 +59,10 @@ public class CybercafesAdapter extends RecyclerView.Adapter<CybercafesAdapter.Cy
         }
 
         holder.tvName.setText(cafes.get(position).getName());
+
+        holder.itemView.setOnClickListener(v -> {
+            dialog.show(cafes.get(position));
+        });
     }
 
 

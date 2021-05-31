@@ -33,4 +33,6 @@
     <string name="no_cafes">You have not added any cafe yet, to add one use the button above.</string>
     <string name="no_matches">No matches</string>
     <string name="couldnt_find_cafe">Couldn\'t find any cafe with that ID.</string>
+    <string name="qr_code">QR code</string>
+    <string name="scan_to_add">Scan this QR to add %1$s to your cafes</string>
 </resources>
