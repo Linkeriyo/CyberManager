@@ -21,4 +21,20 @@
     <string name="passwords_dont_match">Las contraseñas no coinciden.</string>
     <string name="passwordagain_empty">Por favor, confirma tu contraseña.</string>
     <string name="email_empty">El email está vacío.</string>
+    <string name="address">Dirección</string>
+    <string name="city">Ciudad</string>
+    <string name="province">Provincia</string>
+    <string name="zip_code">Código postal</string>
+    <string name="data_set">Los datos se han guardado correctamente.</string>
+    <string name="select_cafe">Seleccionar café</string>
+    <string name="add_cafe">Añadir café</string>
+    <string name="scan_code">Escanear café</string>
+    <string name="no_cafes">No has añadido ningún café aún, para añadir uno usa el botón de arriba.</string>
+    <string name="already_added_cafe">Ese café ya estaba añadido.</string>
+    <string name="scan_to_add">Escanea este QR para añadir %1$s a tus cafés.</string>
+    <string name="qr_code">Código QR</string>
+    <string name="no_matches">No hay coincidencias</string>
+    <string name="couldnt_find_cafe">No se ha podido encontrar el café</string>
+    <string name="cafe_removed">Café eliminado</string>
+    <string name="cafe_added">Café añadido</string>
 </resources>

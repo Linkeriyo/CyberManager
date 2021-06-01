@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         switch (requestCode) {
             case Tags.RQ_LOGIN:
                 if (Preferences.getToken() == null) {
@@ -91,10 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void initLayout() {
         setContentView(binding.getRoot());
-
-        binding.tvLogout.setOnClickListener(v -> {
-            logout();
-        });
     }
 
     public void startLoginActivity() {
