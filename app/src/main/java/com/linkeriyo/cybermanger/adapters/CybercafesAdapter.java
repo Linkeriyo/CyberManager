@@ -18,6 +18,7 @@ import com.linkeriyo.cybermanger.dialogs.DialogGenerateQR;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.requests.UserRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
+import com.linkeriyo.cybermanger.utilities.Tags;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
@@ -73,6 +74,7 @@ public class CybercafesAdapter extends RecyclerView.Adapter<CybercafesAdapter.Cy
 
         holder.itemView.setOnClickListener(v -> {
             Preferences.setSelectedCafe(cafes.get(position).getBusinessId());
+            activity.setResult(Tags.RS_CAFE_CHANGED);
             activity.finish();
         });
     }

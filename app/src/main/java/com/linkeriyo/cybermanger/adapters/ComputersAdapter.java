@@ -12,14 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.models.Computer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComputersAdapter extends RecyclerView.Adapter<ComputersAdapter.ComputerViewHolder> {
 
     List<Computer> computers;
 
-    public ComputersAdapter(MutableLiveData<List<Computer>> computers) {
-        this.computers = computers.getValue();
+    public ComputersAdapter(ArrayList<Computer> computers) {
+        this.computers = computers;
     }
 
     @NonNull

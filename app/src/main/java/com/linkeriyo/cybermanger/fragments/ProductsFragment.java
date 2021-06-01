@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +15,7 @@ import com.linkeriyo.cybermanger.databinding.FragmentProductsBinding;
 import com.linkeriyo.cybermanger.models.Product;
 import com.linkeriyo.cybermanger.viewmodels.ProductModel;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class ProductsFragment extends Fragment {
 
@@ -24,7 +23,7 @@ public class ProductsFragment extends Fragment {
     FragmentProductsBinding binding;
     RecyclerView recyclerView;
     ProductModel viewModel;
-    MutableLiveData<List<Product>> Products;
+    ArrayList<Product> products = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class ProductsFragment extends Fragment {
         recyclerView = binding.rvProducts;
 
         recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
-        recyclerView.setAdapter(new ProductsAdapter(Products));
+        recyclerView.setAdapter(new ProductsAdapter(products));
 
         return binding.getRoot();
     }

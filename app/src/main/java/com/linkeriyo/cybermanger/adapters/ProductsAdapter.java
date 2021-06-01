@@ -12,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.models.Product;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
 
     List<Product> products;
 
-    public ProductsAdapter(MutableLiveData<List<Product>> products) {
-        this.products = products.getValue();
+    public ProductsAdapter(ArrayList<Product> products) {
+        this.products = products;
     }
 
     @NonNull

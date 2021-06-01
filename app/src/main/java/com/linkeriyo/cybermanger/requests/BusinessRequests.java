@@ -4,9 +4,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.activities.MainActivity;
 import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
 import com.linkeriyo.cybermanger.models.CyberCafe;
+import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
 import org.json.JSONArray;
@@ -24,6 +26,42 @@ import retrofit2.Response;
 public class BusinessRequests {
 
     private static final String TAG = "BusinessRequests";
+
+    public static void getBusinessIntoMainActivity(MainActivity activity, final String businessId) {
+        Call<String> call = RetrofitClient.getClient()
+                .create(BusinessService.class)
+                .checkBusiness(businessId);
+        Log.v(TAG, call.request().toString());
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    Log.v(TAG, "checkBusiness response");
+                    Log.v(TAG, response.body() + "");
+
+                    JSONObject jsonResponse = new JSONObject(response.body());
+                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        CyberCafe cyberCafe = new CyberCafe(jsonResponse.getJSONObject(Tags.BUSINESS));
+                        activity.setSelectedCafe(cyberCafe);
+                        activity.initLayout();
+                    } else {
+                        Preferences.removePreference(Tags.SELECTED_CAFE);
+                        activity.startSelectCafeActivity();
+                    }
+                } catch (JSONException exception) {
+                    exception.printStackTrace();
+                    Preferences.removePreference(Tags.SELECTED_CAFE);
+                    activity.startSelectCafeActivity();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.v(TAG, "checkBusiness failure");
+            }
+        });
+    }
 
     public static void checkBusiness(QRScannedDialog dialog, final String businessId) {
         Call<String> call = RetrofitClient.getClient()

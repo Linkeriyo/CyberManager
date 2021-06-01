@@ -38,4 +38,6 @@
     <string name="already_added_cafe">That cafe was already added</string>
     <string name="cafe_removed">Cafe removed successfully</string>
     <string name="cafe_added">Cafe added successfully</string>
+    <string name="welcome_to_cafe">Welcome to %1$s</string>
+    <string name="change_cafe">Change cafe</string>
 </resources>

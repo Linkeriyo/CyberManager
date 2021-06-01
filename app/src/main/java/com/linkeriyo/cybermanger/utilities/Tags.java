@@ -11,6 +11,7 @@ public class Tags {
     public static final int RS_ERROR = -1;
     public static final int RS_OK = 1;
     public static final int RS_LOGOUT = 2;
+    public static final int RS_CAFE_CHANGED = 3;
 
     public static final String SERVIDOR = "http://192.168.1.36:8000/";
     public static final String TOKEN = "token";
@@ -41,4 +42,5 @@ public class Tags {
     public static final String BUSINESS_ID = "business_id";
     public static final String IMAGE = "image";
     public static final String BUSINESS_LIST = "business_list";
+
 }

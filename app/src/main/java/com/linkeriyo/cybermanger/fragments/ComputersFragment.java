@@ -17,6 +17,7 @@ import com.linkeriyo.cybermanger.databinding.FragmentComputersBinding;
 import com.linkeriyo.cybermanger.models.Computer;
 import com.linkeriyo.cybermanger.viewmodels.ComputerModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComputersFragment extends Fragment {
@@ -25,7 +26,7 @@ public class ComputersFragment extends Fragment {
     FragmentComputersBinding binding;
     RecyclerView recyclerView;
     ComputerModel viewModel;
-    MutableLiveData<List<Computer>> computers;
+    ArrayList<Computer> computers = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
