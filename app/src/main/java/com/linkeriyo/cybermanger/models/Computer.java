@@ -25,7 +25,7 @@ public class Computer {
         ipAddress = json.getString(Tags.IP_ADDRESS);
         alias = json.getString(Tags.ALIAS);
     }
-
+    
     public JSONObject toJSON() throws JSONException {
         JSONObject json = new JSONObject();
         json.put(Tags.PK, pk);

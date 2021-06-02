@@ -53,6 +53,10 @@ public class DialogGenerateQR extends Dialog {
         });
     }
 
+    /**
+     * Shows the information for the given cafe
+     * @param cafe cafe about to be shown
+     */
     public void show(CyberCafe cafe) {
         show();
         selectedCafe = cafe;
@@ -64,10 +68,16 @@ public class DialogGenerateQR extends Dialog {
         binding.elementGenerateQr.tvAdvice.setText(getContext().getString(R.string.scan_to_add, cafe.getName()));
     }
 
-    private static Bitmap encodeAsBitmap(String str) {
+    /**
+     * Generates a QR code from a string.
+     *
+     * @param string string that it is going to be encoded
+     * @return bitmap representing a QR code for the string
+     */
+    private static Bitmap encodeAsBitmap(String string) {
         BitMatrix result;
         try {
-            result = new MultiFormatWriter().encode(str,
+            result = new MultiFormatWriter().encode(string,
                     BarcodeFormat.QR_CODE, 150, 150, null);
             int w = result.getWidth();
             int h = result.getHeight();
