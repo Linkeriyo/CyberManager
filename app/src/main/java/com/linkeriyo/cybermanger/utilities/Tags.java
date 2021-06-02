@@ -42,5 +42,9 @@ public class Tags {
     public static final String BUSINESS_ID = "business_id";
     public static final String IMAGE = "image";
     public static final String BUSINESS_LIST = "business_list";
-
+    public static final String DATE = "date";
+    public static final String CONTENT = "content";
+    public static final String TITLE = "title";
+    public static final String DATA = "data";
+    public static final String POST_LIST = "post_list";
 }

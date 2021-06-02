@@ -3,11 +3,12 @@ package com.linkeriyo.cybermanger.requests;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.activities.MainActivity;
 import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
+import com.linkeriyo.cybermanger.fragments.HomeFragment;
 import com.linkeriyo.cybermanger.models.CyberCafe;
+import com.linkeriyo.cybermanger.models.Post;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
@@ -15,9 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -134,6 +134,42 @@ public class BusinessRequests {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.v(TAG, "getBusinessesByUser failure");
+            }
+        });
+    }
+
+    public static void getPostsByBusinessId(HomeFragment fragment, final String token, final String businessId) {
+        Call<String> call = RetrofitClient.getClient()
+                .create(BusinessService.class)
+                .getPostsByBusinessId(JSONTemplates.createPostsByBusinessIdJSON(token, businessId));
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    Log.v(TAG, "getPostsByBusinessId response");
+                    Log.v(TAG, response.body() + "");
+
+                    JSONObject jsonResponse = new JSONObject(response.body());
+                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        ArrayList<Post> posts = new ArrayList<>();
+
+                        JSONArray jsonPosts = jsonResponse.getJSONArray(Tags.POST_LIST);
+                        System.out.println(jsonPosts);
+
+                        for (int i = 0; i < jsonPosts.length(); i++) {
+                            posts.add(new Post(jsonPosts.getJSONObject(i)));
+                        }
+                        fragment.setPosts(posts);
+                    }
+                } catch (JSONException | ParseException exception) {
+                    exception.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.v(TAG, "getPostsByBusinessId  failure");
             }
         });
     }

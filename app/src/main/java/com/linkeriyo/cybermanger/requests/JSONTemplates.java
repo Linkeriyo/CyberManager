@@ -75,4 +75,15 @@ public class JSONTemplates {
         }
         return json;
     }
+
+    public static JSONObject createPostsByBusinessIdJSON(final String token, final String businessId) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Tags.TOKEN, token);
+            json.put(Tags.BUSINESS_ID, businessId);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+        return json;
+    }
 }
