@@ -76,7 +76,7 @@ public class JSONTemplates {
         return json;
     }
 
-    public static JSONObject createPostsByBusinessIdJSON(final String token, final String businessId) {
+    public static JSONObject createTokenAndBusinessIDJSON(final String token, final String businessId) {
         JSONObject json = new JSONObject();
         try {
             json.put(Tags.TOKEN, token);

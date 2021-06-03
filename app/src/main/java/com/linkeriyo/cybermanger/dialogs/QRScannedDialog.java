@@ -35,7 +35,7 @@ public class QRScannedDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initLayout();
-        BusinessRequests.checkBusiness(this, qrValue);
+        BusinessRequests.checkBusiness(this, Preferences.getToken(), qrValue);
     }
 
     private void initLayout() {

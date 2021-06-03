@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         if (selectedCafeId == null) {
             startSelectCafeActivity();
         } else {
-            BusinessRequests.getBusinessIntoMainActivity(this, selectedCafeId);
+            BusinessRequests.getBusinessIntoMainActivity(this, Preferences.getToken(), selectedCafeId);
         }
     }
 

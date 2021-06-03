@@ -13,7 +13,7 @@ public interface BusinessService {
 
     @POST("businesses/check_business/")
     @FormUrlEncoded
-    Call<String> checkBusiness(@Field(Tags.BUSINESS_ID) String businessId);
+    Call<String> checkBusiness(@Field(Tags.DATA) JSONObject data);
 
     @POST("businesses/get_businesses_by_user/")
     @FormUrlEncoded

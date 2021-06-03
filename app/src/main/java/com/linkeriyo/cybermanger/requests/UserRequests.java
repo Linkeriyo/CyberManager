@@ -139,42 +139,6 @@ public class UserRequests {
         });
     }
 
-    public static void getComputers(final Activity activity, final ComputersFragment computersFragment, final String token) {
-        Call<String> call = RetrofitClient.getClient()
-                .create(UserService.class)
-                .getComputers(token);
-        Log.v(TAG, call.request().toString());
-
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                try {
-                    Log.v(TAG, "get_computers response");
-                    Log.v(TAG, response.body() + "");
-
-                    JSONObject jsonResponse = new JSONObject(response.body());
-                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
-                        ArrayList<Computer> computerList = computersFragment.getViewModel().getComputers().getValue();
-                        computerList.clear();
-
-                        JSONArray computersJSON = jsonResponse.getJSONArray(Tags.COMPUTERS);
-                        for (int i = 0; i < computersJSON.length(); i++) {
-                            computerList.add(new Computer(computersJSON.getJSONObject(i)));
-                        }
-                    }
-                } catch (JSONException exception) {
-                    exception.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(activity, "get_computers failure", Toast.LENGTH_SHORT).show();
-                Log.v(TAG, "get_computers failure");
-            }
-        });
-    }
-
     public static void checkUserExtraData(final MainActivity mainActivity, final String token, final String username) {
         Call<String> call = RetrofitClient.getClient()
                 .create(UserService.class)

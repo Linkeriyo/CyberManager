@@ -18,6 +18,7 @@ public class CyberCafe {
     private String zipCode;
     private String image;
     private String businessId;
+    private int balance;
 
     public CyberCafe() {
         pk = "";
@@ -31,6 +32,7 @@ public class CyberCafe {
         zipCode = "";
         image = "";
         businessId = "";
+        balance = 0;
     }
 
     public CyberCafe(JSONObject json) throws JSONException {
@@ -162,5 +164,13 @@ public class CyberCafe {
 
     public void setBusinessId(String businessId) {
         this.businessId = businessId;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 }

@@ -27,10 +27,10 @@ public class BusinessRequests {
 
     private static final String TAG = "BusinessRequests";
 
-    public static void getBusinessIntoMainActivity(MainActivity activity, final String businessId) {
+    public static void getBusinessIntoMainActivity(MainActivity activity, final String token, final String businessId) {
         Call<String> call = RetrofitClient.getClient()
                 .create(BusinessService.class)
-                .checkBusiness(businessId);
+                .checkBusiness(JSONTemplates.createTokenAndBusinessIDJSON(token, businessId));
         Log.v(TAG, call.request().toString());
 
         call.enqueue(new Callback<String>() {
@@ -43,6 +43,7 @@ public class BusinessRequests {
                     JSONObject jsonResponse = new JSONObject(response.body());
                     if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
                         CyberCafe cyberCafe = new CyberCafe(jsonResponse.getJSONObject(Tags.BUSINESS));
+                        cyberCafe.setBalance(jsonResponse.getInt(Tags.BALANCE));
                         activity.setSelectedCafe(cyberCafe);
                         activity.initLayout();
                     } else {
@@ -63,10 +64,10 @@ public class BusinessRequests {
         });
     }
 
-    public static void checkBusiness(QRScannedDialog dialog, final String businessId) {
+    public static void checkBusiness(QRScannedDialog dialog, final String token, final String businessId) {
         Call<String> call = RetrofitClient.getClient()
                 .create(BusinessService.class)
-                .checkBusiness(businessId);
+                .checkBusiness(JSONTemplates.createTokenAndBusinessIDJSON(token, businessId));
         Log.v(TAG, call.request().toString());
 
         call.enqueue(new Callback<String>() {
@@ -79,6 +80,7 @@ public class BusinessRequests {
                     JSONObject jsonResponse = new JSONObject(response.body());
                     if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
                         CyberCafe cyberCafe = new CyberCafe(jsonResponse.getJSONObject(Tags.BUSINESS));
+                        cyberCafe.setBalance(jsonResponse.getInt(Tags.BALANCE));
                         dialog.showCyberCafeIfMatched(cyberCafe);
                     } else {
                         dialog.showCyberCafeIfMatched(null);
@@ -141,7 +143,7 @@ public class BusinessRequests {
     public static void getPostsByBusinessId(HomeFragment fragment, final String token, final String businessId) {
         Call<String> call = RetrofitClient.getClient()
                 .create(BusinessService.class)
-                .getPostsByBusinessId(JSONTemplates.createPostsByBusinessIdJSON(token, businessId));
+                .getPostsByBusinessId(JSONTemplates.createTokenAndBusinessIDJSON(token, businessId));
 
         call.enqueue(new Callback<String>() {
             @Override
