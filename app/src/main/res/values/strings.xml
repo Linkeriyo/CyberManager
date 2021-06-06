@@ -44,4 +44,6 @@
     <string name="balance">%1$dcg</string>
     <string name="no_posts">This cafe has not submitted any posts yet.</string>
     <string name="no_computers">This cafe has no computers, come back later.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

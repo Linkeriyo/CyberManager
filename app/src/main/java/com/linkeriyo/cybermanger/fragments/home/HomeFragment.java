@@ -1,4 +1,4 @@
-package com.linkeriyo.cybermanger.fragments;
+package com.linkeriyo.cybermanger.fragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +19,6 @@ import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.models.Post;
 import com.linkeriyo.cybermanger.requests.BusinessRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
-import com.linkeriyo.cybermanger.utilities.Tags;
 
 import java.util.ArrayList;
 

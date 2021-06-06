@@ -1,13 +1,10 @@
 package com.linkeriyo.cybermanger.dialogs;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-
-import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.linkeriyo.cybermanger.R;

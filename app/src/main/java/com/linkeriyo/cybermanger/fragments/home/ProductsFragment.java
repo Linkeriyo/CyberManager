@@ -1,4 +1,4 @@
-package com.linkeriyo.cybermanger.fragments;
+package com.linkeriyo.cybermanger.fragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

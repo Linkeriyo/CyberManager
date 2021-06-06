@@ -7,7 +7,7 @@
     android:layout_marginStart="0dp"
     android:layout_marginTop="0dp"
     android:layout_marginEnd="0dp"
-    tools:context=".fragments.HomeFragment">
+    tools:context=".fragments.home.HomeFragment">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/civ_cafe_image"

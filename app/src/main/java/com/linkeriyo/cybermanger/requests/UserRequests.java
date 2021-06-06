@@ -1,6 +1,5 @@
 package com.linkeriyo.cybermanger.requests;
 
-import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -8,23 +7,16 @@ import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.activities.ExtraDataActivity;
 import com.linkeriyo.cybermanger.activities.LoginActivity;
 import com.linkeriyo.cybermanger.activities.MainActivity;
-import com.linkeriyo.cybermanger.activities.ScanQRActivity;
 import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
-import com.linkeriyo.cybermanger.fragments.ComputersFragment;
-import com.linkeriyo.cybermanger.fragments.SignUpFragment;
-import com.linkeriyo.cybermanger.models.Computer;
+import com.linkeriyo.cybermanger.fragments.login.SignUpFragment;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

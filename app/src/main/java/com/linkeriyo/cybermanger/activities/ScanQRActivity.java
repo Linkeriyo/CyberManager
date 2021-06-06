@@ -5,15 +5,11 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.SparseArray;
-import android.view.Display;
 import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.vision.CameraSource;
@@ -24,14 +20,7 @@ import com.linkeriyo.cybermanger.databinding.ActivityScanQrBinding;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ScanQRActivity extends Activity {
 

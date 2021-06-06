@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.linkeriyo.cybermanger.fragments.ComputersFragment;
-import com.linkeriyo.cybermanger.fragments.HomeFragment;
-import com.linkeriyo.cybermanger.fragments.ProductsFragment;
+import com.linkeriyo.cybermanger.fragments.home.ComputersFragment;
+import com.linkeriyo.cybermanger.fragments.home.HomeFragment;
+import com.linkeriyo.cybermanger.fragments.home.ProductsFragment;
 
 public class HomeFragmentsAdapter extends FragmentStateAdapter {
     public HomeFragmentsAdapter(@NonNull FragmentActivity fragmentActivity) {

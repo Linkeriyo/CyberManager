@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainLoginFragment"
-        android:name="com.linkeriyo.cybermanger.fragments.LoginFragment"
+        android:name="com.linkeriyo.cybermanger.fragments.login.LoginFragment"
         android:label="fragment_main_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.linkeriyo.cybermanger.fragments.SignUpFragment"
+        android:name="com.linkeriyo.cybermanger.fragments.login.SignUpFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_sign_up" >
         <action

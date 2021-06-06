@@ -2,10 +2,8 @@ package com.linkeriyo.cybermanger.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 
 import androidx.annotation.NonNull;
@@ -15,14 +13,9 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
 import com.linkeriyo.cybermanger.R;
-import com.linkeriyo.cybermanger.databinding.DialogCheckQrBinding;
 import com.linkeriyo.cybermanger.databinding.DialogGenerateQrBinding;
 import com.linkeriyo.cybermanger.models.CyberCafe;
-import com.linkeriyo.cybermanger.requests.BusinessRequests;
-import com.linkeriyo.cybermanger.requests.UserRequests;
-import com.linkeriyo.cybermanger.utilities.Preferences;
 
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;

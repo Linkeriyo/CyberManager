@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
-import com.linkeriyo.cybermanger.databinding.ElementComputerBinding;
 import com.linkeriyo.cybermanger.dialogs.DialogGenerateQR;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.requests.UserRequests;

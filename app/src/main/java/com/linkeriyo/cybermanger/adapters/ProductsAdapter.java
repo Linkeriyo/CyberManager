@@ -6,13 +6,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.models.Product;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

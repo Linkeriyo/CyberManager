@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.linkeriyo.cybermanger.fragments.HomeFragment"
+        android:name="com.linkeriyo.cybermanger.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -15,12 +15,12 @@
     </fragment>
     <fragment
         android:id="@+id/computersFragment"
-        android:name="com.linkeriyo.cybermanger.fragments.ComputersFragment"
+        android:name="com.linkeriyo.cybermanger.fragments.home.ComputersFragment"
         android:label="fragment_computers"
         tools:layout="@layout/fragment_computers" />
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.linkeriyo.cybermanger.fragments.ProductsFragment"
+        android:name="com.linkeriyo.cybermanger.fragments.home.ProductsFragment"
         android:label="fragment_products"
         tools:layout="@layout/fragment_products" />
 </navigation>

@@ -1,15 +1,11 @@
 package com.linkeriyo.cybermanger.activities;
 
-import androidx.annotation.NavigationRes;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.adapters.HomeFragmentsAdapter;
