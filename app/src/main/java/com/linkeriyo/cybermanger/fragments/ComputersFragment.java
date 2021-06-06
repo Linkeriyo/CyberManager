@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.activities.MainActivity;
@@ -15,7 +16,8 @@ import com.linkeriyo.cybermanger.adapters.ComputersAdapter;
 import com.linkeriyo.cybermanger.databinding.FragmentComputersBinding;
 import com.linkeriyo.cybermanger.models.Computer;
 import com.linkeriyo.cybermanger.models.CyberCafe;
-import com.linkeriyo.cybermanger.viewmodels.ComputerModel;
+import com.linkeriyo.cybermanger.requests.BusinessRequests;
+import com.linkeriyo.cybermanger.utilities.Preferences;
 
 import java.util.ArrayList;
 
@@ -45,6 +47,32 @@ public class ComputersFragment extends Fragment {
         binding.rvComputers.setLayoutManager(new LinearLayoutManager(activity));
         binding.rvComputers.setAdapter(new ComputersAdapter(computers));
 
+        binding.btBalance.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "back2back", Toast.LENGTH_SHORT).show();
+        });
+
         return binding.getRoot();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BusinessRequests.getComputersByBusinessId(this, Preferences.getToken(), selectedCafe.getBusinessId());
+    }
+
+    public void setComputers(ArrayList<Computer> computerList) {
+        computers.clear();
+        computers.addAll(computerList);
+        binding.rvComputers.getAdapter().notifyDataSetChanged();
+        refreshTextView();
+    }
+
+    private void refreshTextView() {
+        if (computers.isEmpty()) {
+            binding.tvNoComputers.setVisibility(View.VISIBLE);
+        } else {
+            binding.tvNoComputers.setVisibility(View.INVISIBLE);
+        }
+    }
+
 }

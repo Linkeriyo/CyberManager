@@ -13,7 +13,6 @@ import com.linkeriyo.cybermanger.activities.MainActivity;
 import com.linkeriyo.cybermanger.adapters.ProductsAdapter;
 import com.linkeriyo.cybermanger.databinding.FragmentProductsBinding;
 import com.linkeriyo.cybermanger.models.Product;
-import com.linkeriyo.cybermanger.viewmodels.ProductModel;
 
 import java.util.ArrayList;
 
@@ -22,13 +21,11 @@ public class ProductsFragment extends Fragment {
     MainActivity mainActivity;
     FragmentProductsBinding binding;
     RecyclerView recyclerView;
-    ProductModel viewModel;
     ArrayList<Product> products = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = new ProductModel();
     }
 
     @Override
@@ -44,7 +41,4 @@ public class ProductsFragment extends Fragment {
         return binding.getRoot();
     }
 
-    public ProductModel getViewModel() {
-        return viewModel;
-    }
 }

@@ -42,4 +42,6 @@
     <string name="change_cafe">Change cafe</string>
     <string name="cafes_posts">%1$s\'s posts</string>
     <string name="balance">%1$dcg</string>
+    <string name="no_posts">This cafe has not submitted any posts yet.</string>
+    <string name="no_computers">This cafe has no computers, come back later.</string>
 </resources>

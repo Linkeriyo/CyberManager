@@ -22,4 +22,8 @@ public interface BusinessService {
     @POST("businesses/get_posts_by_business_id/")
     @FormUrlEncoded
     Call<String> getPostsByBusinessId(@Field(Tags.DATA) JSONObject data);
+
+    @POST("businesses/get_computers_by_business_id/")
+    @FormUrlEncoded
+    Call<String> getComputersByBusinessId(@Field(Tags.DATA) JSONObject data);
 }

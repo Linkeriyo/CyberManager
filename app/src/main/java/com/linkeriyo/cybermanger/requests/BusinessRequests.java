@@ -6,7 +6,9 @@ import android.widget.Toast;
 import com.linkeriyo.cybermanger.activities.MainActivity;
 import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
+import com.linkeriyo.cybermanger.fragments.ComputersFragment;
 import com.linkeriyo.cybermanger.fragments.HomeFragment;
+import com.linkeriyo.cybermanger.models.Computer;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.models.Post;
 import com.linkeriyo.cybermanger.utilities.Preferences;
@@ -172,6 +174,42 @@ public class BusinessRequests {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.v(TAG, "getPostsByBusinessId  failure");
+            }
+        });
+    }
+    
+    public static void getComputersByBusinessId(ComputersFragment fragment, final String token, final String businessId) {
+        Call<String> call = RetrofitClient.getClient()
+                .create(BusinessService.class)
+                .getComputersByBusinessId(JSONTemplates.createTokenAndBusinessIDJSON(token, businessId));
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    Log.v(TAG, "getComputersByBusinessId response");
+                    Log.v(TAG, response.body() + "");
+
+                    JSONObject jsonResponse = new JSONObject(response.body());
+                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        ArrayList<Computer> computers = new ArrayList<>();
+
+                        JSONArray jsonComputers = jsonResponse.getJSONArray(Tags.COMPUTER_LIST);
+                        System.out.println(jsonComputers);
+
+                        for (int i = 0; i < jsonComputers.length(); i++) {
+                            computers.add(new Computer(jsonComputers.getJSONObject(i)));
+                        }
+                        fragment.setComputers(computers);
+                    }
+                } catch (JSONException exception) {
+                    exception.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.v(TAG, "getComputersByBusinessId  failure");
             }
         });
     }

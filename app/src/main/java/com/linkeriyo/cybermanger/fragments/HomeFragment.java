@@ -71,11 +71,19 @@ public class HomeFragment extends Fragment {
         BusinessRequests.getPostsByBusinessId(this, Preferences.getToken(), selectedCafe.getBusinessId());
     }
 
+    private void refreshTextView() {
+        if (posts.isEmpty()) {
+            binding.tvNoPosts.setVisibility(View.VISIBLE);
+        } else {
+            binding.tvNoPosts.setVisibility(View.INVISIBLE);
+        }
+    }
+    
     public void setPosts(ArrayList<Post> postList) {
         posts.clear();
         posts.addAll(postList);
         binding.rvPosts.getAdapter().notifyDataSetChanged();
-        //refreshTextView();
+        refreshTextView();
         binding.refreshPosts.setRefreshing(false);
     }
 }

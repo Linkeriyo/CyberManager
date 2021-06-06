@@ -48,4 +48,5 @@ public class Tags {
     public static final String DATA = "data";
     public static final String POST_LIST = "post_list";
     public static final String BALANCE = "balance";
+    public static final String COMPUTER_LIST = "computer_list";
 }
