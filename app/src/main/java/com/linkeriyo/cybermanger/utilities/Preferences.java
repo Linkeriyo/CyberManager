@@ -103,4 +103,12 @@ public class Preferences {
     public static void setSelectedCafeName(String value) {
         setString(Tags.SELECTED_CAFE_NAME, value);
     }
+
+    public static int getBalance() {
+        return getSharedPreferences().getInt(Tags.BALANCE, 0);
+    }
+
+    public static void setBalance(int value) {
+        setInt(Tags.BALANCE, value);
+    }
 }

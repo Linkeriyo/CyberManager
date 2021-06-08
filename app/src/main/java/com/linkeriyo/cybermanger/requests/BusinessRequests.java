@@ -46,15 +46,22 @@ public class BusinessRequests {
                     if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
                         CyberCafe cyberCafe = new CyberCafe(jsonResponse.getJSONObject(Tags.BUSINESS));
                         cyberCafe.setBalance(jsonResponse.getInt(Tags.BALANCE));
+                        Preferences.setSelectedCafeName(cyberCafe.getName());
+                        Preferences.setSelectedCafe(cyberCafe.getBusinessId());
+                        Preferences.setBalance(cyberCafe.getBalance());
                         activity.setSelectedCafe(cyberCafe);
                         activity.initLayout();
                     } else {
                         Preferences.removePreference(Tags.SELECTED_CAFE);
+                        Preferences.removePreference(Tags.BALANCE);
+                        Preferences.removePreference(Tags.SELECTED_CAFE_NAME);
                         activity.startSelectCafeActivity();
                     }
                 } catch (JSONException exception) {
                     exception.printStackTrace();
                     Preferences.removePreference(Tags.SELECTED_CAFE);
+                    Preferences.removePreference(Tags.BALANCE);
+                    Preferences.removePreference(Tags.SELECTED_CAFE_NAME);
                     activity.startSelectCafeActivity();
                 }
             }

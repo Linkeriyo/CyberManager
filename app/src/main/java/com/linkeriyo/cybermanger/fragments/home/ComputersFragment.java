@@ -41,7 +41,7 @@ public class ComputersFragment extends Fragment {
 
         binding.toolbar.setSubtitle(selectedCafe.getName());
 
-        binding.tvBalance.setText(getString(R.string.balance, selectedCafe.getBalance()));
+        binding.tvBalance.setText(getString(R.string.balance, Preferences.getBalance()));
 
         binding.rvComputers.setLayoutManager(new LinearLayoutManager(activity));
         binding.rvComputers.setAdapter(new ComputersAdapter(computers));
@@ -57,6 +57,7 @@ public class ComputersFragment extends Fragment {
     public void onResume() {
         super.onResume();
         BusinessRequests.getComputersByBusinessId(this, Preferences.getToken(), selectedCafe.getBusinessId());
+        binding.tvBalance.setText(getString(R.string.balance, Preferences.getBalance()));
     }
 
     public void setComputers(ArrayList<Computer> computerList) {

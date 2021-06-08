@@ -109,4 +109,16 @@ public class JSONTemplates {
         }
         return json;
     }
+
+    public static JSONObject createGetCybergoldJSON(String token, String businessId, int quantity) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Tags.TOKEN, token);
+            json.put(Tags.BUSINESS_ID, businessId);
+            json.put(Tags.QUANTITY, quantity);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+        return json;
+    }
 }

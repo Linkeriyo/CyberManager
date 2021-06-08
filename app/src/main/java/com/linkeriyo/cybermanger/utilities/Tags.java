@@ -58,4 +58,5 @@ public class Tags {
     public static final String EXPIRES_MONTH = "expires_month";
     public static final String EXPIRES_YEAR = "expires_year";
     public static final String SELECTED_CAFE_NAME = "selected_cafe_name";
+    public static final String QUANTITY = "quantity";
 }

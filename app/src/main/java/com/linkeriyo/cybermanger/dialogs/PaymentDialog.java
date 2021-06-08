@@ -1,5 +1,6 @@
 package com.linkeriyo.cybermanger.dialogs;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -7,13 +8,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Window;
+import android.widget.Adapter;
 
 import androidx.annotation.NonNull;
 
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.activities.AddBalanceActivity;
 import com.linkeriyo.cybermanger.databinding.DialogGenerateQrBinding;
 import com.linkeriyo.cybermanger.databinding.DialogPaymentBinding;
 import com.linkeriyo.cybermanger.models.CyberCafe;
+import com.linkeriyo.cybermanger.requests.PaymentsRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 
 import java.text.ParseException;
@@ -21,10 +25,12 @@ import java.text.ParseException;
 public class PaymentDialog extends Dialog {
 
     private static final String TAG = "PaymentDialog";
+    private final Activity activity;
     DialogPaymentBinding binding;
 
-    public PaymentDialog(@NonNull Context context) {
-        super(context);
+    public PaymentDialog(Activity activity) {
+        super(activity);
+        this.activity = activity;
     }
 
     @Override
@@ -44,6 +50,11 @@ public class PaymentDialog extends Dialog {
         binding.btCancel.setOnClickListener(v -> {
             System.out.println("dialog canceled");
             dismiss();
+        });
+
+        binding.btAccept.setOnClickListener(v -> {
+            int cyberGold = Integer.parseInt(binding.etCybergold.getText().toString());
+            PaymentsRequests.getCybergold(this, Preferences.getToken(), Preferences.getSelectedCafe(), cyberGold);
         });
 
         binding.etCybergold.addTextChangedListener(new TextWatcher() {
@@ -66,8 +77,9 @@ public class PaymentDialog extends Dialog {
                     }
                 } catch (NumberFormatException e) {
                     Log.v(TAG, "Couldn't parse cybergold");
+                    binding.btAccept.setEnabled(false);
+                    binding.btAccept.setTextColor(getContext().getColor(R.color.colorTextTransparent));
                 }
-
             }
 
             @Override
@@ -75,6 +87,11 @@ public class PaymentDialog extends Dialog {
 
             }
         });
+    }
+
+    public void balanceAdded() {
+        dismiss();
+        activity.finish();
     }
 
     private String getPriceFromCybergold(int cg) {

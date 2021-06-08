@@ -2,9 +2,11 @@ package com.linkeriyo.cybermanger.requests;
 
 import android.util.Log;
 
+import com.linkeriyo.cybermanger.dialogs.PaymentDialog;
 import com.linkeriyo.cybermanger.fragments.payment.NewCardFragment;
 import com.linkeriyo.cybermanger.fragments.payment.PaymentMethodsFragment;
 import com.linkeriyo.cybermanger.models.CreditCard;
+import com.linkeriyo.cybermanger.utilities.Preferences;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
 import org.json.JSONArray;
@@ -114,6 +116,36 @@ public class PaymentsRequests {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Log.v(TAG, "removeCard failure");
+            }
+        });
+    }
+
+    public static void getCybergold(PaymentDialog dialog, String token, String businessId, int quantity) {
+        Call<String> call = RetrofitClient.getClient()
+                .create(PaymentsService.class)
+                .getCybergold(JSONTemplates.createGetCybergoldJSON(token, businessId, quantity));
+        Log.v(TAG, call.request().toString());
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    Log.v(TAG, "getCybergold response");
+                    Log.v(TAG, response.body() + "");
+
+                    JSONObject jsonResponse = new JSONObject(response.body());
+                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        Preferences.setBalance(jsonResponse.getInt(Tags.BALANCE));
+                        dialog.balanceAdded();
+                    }
+                } catch (JSONException exception) {
+                    exception.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.v(TAG, "getCybergold failure");
             }
         });
     }

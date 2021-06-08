@@ -22,4 +22,8 @@ public interface PaymentsService {
     @POST("payments/remove_card/")
     @FormUrlEncoded
     Call<String> removeCard(@Field(Tags.DATA) JSONObject data);
+
+    @POST("payments/get_cybergold/")
+    @FormUrlEncoded
+    Call<String> getCybergold(@Field(Tags.DATA) JSONObject data);
 }

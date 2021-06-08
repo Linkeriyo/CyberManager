@@ -74,6 +74,7 @@ public class CybercafesAdapter extends RecyclerView.Adapter<CybercafesAdapter.Cy
         holder.itemView.setOnClickListener(v -> {
             Preferences.setSelectedCafe(cafes.get(position).getBusinessId());
             Preferences.setSelectedCafeName(cafes.get(position).getName());
+            Preferences.setBalance(cafes.get(position).getBalance());
             activity.setResult(Tags.RS_CAFE_CHANGED);
             activity.finish();
         });

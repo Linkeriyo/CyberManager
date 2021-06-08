@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.activities.AddBalanceActivity;
 import com.linkeriyo.cybermanger.dialogs.PaymentDialog;
 import com.linkeriyo.cybermanger.fragments.payment.PaymentMethodsFragment;
 import com.linkeriyo.cybermanger.models.CreditCard;
@@ -48,7 +49,7 @@ public class PaymentMethodsAdapter extends RecyclerView.Adapter<PaymentMethodsAd
         });
 
         holder.clMethod.setOnClickListener(v -> {
-            new PaymentDialog(fragment.getContext()).show();
+            new PaymentDialog(fragment.getActivity()).show();
         });
     }
 
