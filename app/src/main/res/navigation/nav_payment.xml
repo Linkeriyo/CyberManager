@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_payment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_payment"
+    app:startDestination="@id/paymentMethodsFragment">
 
+    <fragment
+        android:id="@+id/paymentMethodsFragment"
+        android:name="com.linkeriyo.cybermanger.fragments.payment.PaymentMethodsFragment"
+        android:label="fragment_payment_methods"
+        tools:layout="@layout/fragment_payment_methods" >
+        <action
+            android:id="@+id/action_paymentMethodsFragment_to_loginFragment"
+            app:destination="@id/newCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCardFragment"
+        android:name="com.linkeriyo.cybermanger.fragments.payment.NewCardFragment"
+        android:label="fragment_new_card"
+        tools:layout="@layout/fragment_new_card" />
 </navigation>

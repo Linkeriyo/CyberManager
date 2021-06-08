@@ -1,5 +1,6 @@
 package com.linkeriyo.cybermanger.requests;
 
+import com.linkeriyo.cybermanger.models.CreditCard;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
@@ -81,6 +82,28 @@ public class JSONTemplates {
         try {
             json.put(Tags.TOKEN, token);
             json.put(Tags.BUSINESS_ID, businessId);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+        return json;
+    }
+
+    public static JSONObject createNewCardJSON(String token, CreditCard creditCard) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Tags.TOKEN, token);
+            json.put(Tags.CREDIT_CARD, creditCard.toJSON());
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+        return json;
+    }
+
+    public static JSONObject createRemoveCardJSON(String token, CreditCard creditCard) {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Tags.TOKEN, token);
+            json.put(Tags.CREDIT_CARD, creditCard.toJSON());
         } catch (JSONException exception) {
             exception.printStackTrace();
         }

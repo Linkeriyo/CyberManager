@@ -14,13 +14,38 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_cybergold"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/divider3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                app:layout_constraintVertical_bias="0.45">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_cybergold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cybergold"
+                    android:inputType="number"
+                    android:text="0" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/bt_accept"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@android:color/transparent"
                 android:enabled="false"
-                android:text="Accept"
+                android:text="@string/accept"
                 android:textColor="@color/colorTextTransparent"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +58,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@android:color/transparent"
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:textColor="@color/colorTextPure"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/qr_scanned"
+                android:text="@string/confirm_payment"
                 android:textColor="@color/colorTextPure"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -76,37 +101,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
+            <TextView
+                android:id="@+id/tv_realprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/divider3"
+                android:layout_marginTop="16dp"
+                android:text="@string/real_price"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+                app:layout_constraintTop_toBottomOf="@+id/til_cybergold" />
 
-            <include
-                android:id="@+id/element_cybercafe"
-                layout="@layout/element_cybercafe_for_dialog"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_cafe"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@+id/divider3"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="@string/cafe_confirmation"
+                app:layout_constraintBottom_toTopOf="@+id/til_cybergold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
-
-            <include
-                android:id="@+id/element_no_match"
-                layout="@layout/element_cybercafe_not_matched"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@+id/divider3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

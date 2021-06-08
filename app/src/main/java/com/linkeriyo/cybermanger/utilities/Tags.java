@@ -5,6 +5,7 @@ public class Tags {
     public static final int RQ_EXTRA_DATA = 101;
     public static final int RQ_SCAN_QR = 102;
     public static final int RQ_SELECT_CAFE = 103;
+    public static final int RQ_ADD_BALANCE = 104;
 
     public static final int RQ_CAM_PERMISSION = 200;
 
@@ -49,4 +50,12 @@ public class Tags {
     public static final String POST_LIST = "post_list";
     public static final String BALANCE = "balance";
     public static final String COMPUTER_LIST = "computer_list";
+    public static final String CARD_LIST = "card_list";
+    public static final String CARD_HOLDER = "card_holder";
+    public static final String CARD_NUMBER = "card_number";
+    public static final String CVV = "cvv";
+    public static final String CREDIT_CARD = "credit_card";
+    public static final String EXPIRES_MONTH = "expires_month";
+    public static final String EXPIRES_YEAR = "expires_year";
+    public static final String SELECTED_CAFE_NAME = "selected_cafe_name";
 }

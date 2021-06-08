@@ -47,7 +47,7 @@ public class ComputersFragment extends Fragment {
         binding.rvComputers.setAdapter(new ComputersAdapter(computers));
 
         binding.btBalance.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "back2back", Toast.LENGTH_SHORT).show();
+            activity.startAddBalanceActivity();
         });
 
         return binding.getRoot();

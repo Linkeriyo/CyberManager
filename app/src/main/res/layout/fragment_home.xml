@@ -71,8 +71,8 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/ib_change_cafe"
+                <ImageView
+                    android:id="@+id/iv_change_cafe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -107,8 +107,8 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/ib_logout"
+                <ImageView
+                    android:id="@+id/iv_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

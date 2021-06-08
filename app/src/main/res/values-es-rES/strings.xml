@@ -37,4 +37,20 @@
     <string name="couldnt_find_cafe">No se ha podido encontrar el café</string>
     <string name="cafe_removed">Café eliminado</string>
     <string name="cafe_added">Café añadido</string>
+    <string name="welcome_to_cafe">Bienvenido a %!$s!</string>
+    <string name="change_cafe">Cambiar café</string>
+    <string name="cafes_posts">Noticias de %1$s</string>
+    <string name="no_posts">Este café aún no ha publicado ninguna noticia.</string>
+    <string name="no_computers">Este café no tiene ordenadores, vuelve más tarde.</string>
+    <string name="add_method">Añadir método</string>
+    <string name="payment_methods">Métodos de pago</string>
+    <string name="card_holder">Nombre del titular</string>
+    <string name="card_number">Número de tarjeta</string>
+    <string name="expiration_date">Fecha de caducidad</string>
+    <string name="year">Año</string>
+    <string name="month">Mes</string>
+    <string name="add_card">Añadir tarjeta</string>
+    <string name="no_methods">No has añadido ningún método de pago.</string>
+    <string name="credit_card">%1$s terminada en %2$s</string>
+    <string name="unknown_card">Tarjeta desconocida</string>
 </resources>

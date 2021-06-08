@@ -7,7 +7,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.linkeriyo.cybermanger.fragments.home.ComputersFragment;
 import com.linkeriyo.cybermanger.fragments.home.HomeFragment;
-import com.linkeriyo.cybermanger.fragments.home.ProductsFragment;
 
 public class HomeFragmentsAdapter extends FragmentStateAdapter {
     public HomeFragmentsAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -19,17 +18,15 @@ public class HomeFragmentsAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new ComputersFragment();
-            case 1:
                 return new HomeFragment();
-            case 2:
-                return new ProductsFragment();
+            case 1:
+                return new ComputersFragment();
         }
         return null;
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 }

@@ -22,9 +22,12 @@ public class MainActivity extends AppCompatActivity {
     boolean userFillingExtraData = false;
     boolean userSeletingCafe = false;
     boolean layoutInitialized = false;
+    boolean userAddingBalance = false;
+
     ActivityMainBinding binding;
 
     CyberCafe selectedCafe;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                     case Tags.RS_ERROR:
                         finish();
                 }
+                break;
+            case Tags.RQ_ADD_BALANCE:
+                userAddingBalance = false;
         }
     }
 
@@ -100,11 +106,9 @@ public class MainActivity extends AppCompatActivity {
             binding.bottomNavView.setSelectedItemId(R.id.item_home);
             binding.bottomNavView.setOnNavigationItemSelectedListener(item -> {
                 if (item.getItemId() == R.id.item_computers) {
-                    binding.viewPager.setCurrentItem(0);
-                } else if (item.getItemId() == R.id.item_home) {
                     binding.viewPager.setCurrentItem(1);
-                } else {
-                    binding.viewPager.setCurrentItem(2);
+                } else if (item.getItemId() == R.id.item_home) {
+                    binding.viewPager.setCurrentItem(0);
                 }
                 return true;
             });
@@ -116,19 +120,14 @@ public class MainActivity extends AppCompatActivity {
                     if (layoutInitialized) {
                         switch (position) {
                             case 0:
-                                binding.bottomNavView.setSelectedItemId(R.id.item_computers);
-                                break;
-                            case 1:
                                 binding.bottomNavView.setSelectedItemId(R.id.item_home);
                                 break;
-                            case 2:
-                                binding.bottomNavView.setSelectedItemId(R.id.item_store);
+                            case 1:
+                                binding.bottomNavView.setSelectedItemId(R.id.item_computers);
+                                break;
                         }
                     }
                 }
-            });
-            binding.viewPager.post(() -> {
-                binding.viewPager.setCurrentItem(1, false);
             });
             layoutInitialized = true;
         }
@@ -149,6 +148,11 @@ public class MainActivity extends AppCompatActivity {
         userSeletingCafe = true;
     }
 
+    public void startAddBalanceActivity() {
+        startActivityForResult(new Intent(this, AddBalanceActivity.class), Tags.RQ_ADD_BALANCE);
+        userAddingBalance = true;
+    }
+
     public void logout() {
         UserRequests.logout(this, Preferences.getToken());
     }
@@ -160,5 +164,4 @@ public class MainActivity extends AppCompatActivity {
     public CyberCafe getSelectedCafe() {
         return selectedCafe;
     }
-
 }

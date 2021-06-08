@@ -41,10 +41,26 @@
     <string name="welcome_to_cafe">Welcome to %1$s!</string>
     <string name="change_cafe">Change cafe</string>
     <string name="cafes_posts">%1$s\'s posts</string>
-    <string name="balance">%1$dcg</string>
+    <string name="balance" translatable="false">%1$dcg</string>
     <string name="no_posts">This cafe has not submitted any posts yet.</string>
     <string name="no_computers">This cafe has no computers, come back later.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_method">Add method</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="card_holder">Card holder name</string>
+    <string name="card_number">Card number</string>
+    <string name="expiration_date">Expiration date</string>
+    <string name="year">Year</string>
+    <string name="month">Month</string>
+    <string name="cvv" translatable="false">CVV</string>
+    <string name="add_card">Add card</string>
+    <string name="no_methods">You have not added any payment methods yet.</string>
+    <string name="credit_card">%1$s ending with %2$s</string>
+    <string name="unknown_card">Unknown card</string>
+    <string name="qr_scanned">QR code scanned</string>
+    <string name="cybergold">Cybergold</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm_payment">Confirm payment</string>
+    <string name="real_price">You will pay %1$s for this purchase.</string>
+    <string name="cafe_confirmation">You are buying cybergold for %1$s</string>
 </resources>

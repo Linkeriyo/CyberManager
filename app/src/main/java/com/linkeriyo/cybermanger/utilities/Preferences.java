@@ -95,4 +95,12 @@ public class Preferences {
     public static void setSelectedCafe(String value) {
         setString(Tags.SELECTED_CAFE, value);
     }
+
+    public static String getSelectedCafeName() {
+        return getSharedPreferences().getString(Tags.SELECTED_CAFE_NAME, null);
+    }
+
+    public static void setSelectedCafeName(String value) {
+        setString(Tags.SELECTED_CAFE_NAME, value);
+    }
 }
