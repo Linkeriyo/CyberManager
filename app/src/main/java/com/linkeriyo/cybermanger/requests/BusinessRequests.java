@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.linkeriyo.cybermanger.activities.MainActivity;
 import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
+import com.linkeriyo.cybermanger.dialogs.WriteIdDialog;
 import com.linkeriyo.cybermanger.fragments.home.ComputersFragment;
 import com.linkeriyo.cybermanger.fragments.home.HomeFragment;
 import com.linkeriyo.cybermanger.models.Computer;
@@ -74,6 +75,46 @@ public class BusinessRequests {
     }
 
     public static void checkBusiness(QRScannedDialog dialog, final String token, final String businessId) {
+        Call<String> call = RetrofitClient.getClient()
+                .create(BusinessService.class)
+                .checkBusiness(JSONTemplates.createTokenAndBusinessIDJSON(token, businessId));
+        Log.v(TAG, call.request().toString());
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    Log.v(TAG, "checkBusiness response");
+                    Log.v(TAG, response.body() + "");
+
+                    JSONObject jsonResponse = new JSONObject(response.body());
+                    if (jsonResponse.getString(Tags.RESULT).equals(Tags.OK)) {
+                        CyberCafe cyberCafe = new CyberCafe(jsonResponse.getJSONObject(Tags.BUSINESS));
+                        cyberCafe.setBalance(jsonResponse.getInt(Tags.BALANCE));
+                        dialog.showCyberCafeIfMatched(cyberCafe);
+                    } else {
+                        dialog.showCyberCafeIfMatched(null);
+                    }
+                } catch (JSONException exception) {
+                    exception.printStackTrace();
+                    dialog.showCyberCafeIfMatched(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.v(TAG, "checkBusiness failure");
+                Toast.makeText(
+                        dialog.getContext(),
+                        "An error occurred when handling the server's response.",
+                        Toast.LENGTH_SHORT
+                ).show();
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public static void checkBusinessForWriting(WriteIdDialog dialog, final String token, final String businessId) {
         Call<String> call = RetrofitClient.getClient()
                 .create(BusinessService.class)
                 .checkBusiness(JSONTemplates.createTokenAndBusinessIDJSON(token, businessId));

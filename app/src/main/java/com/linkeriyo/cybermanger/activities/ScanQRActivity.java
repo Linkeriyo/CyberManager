@@ -18,6 +18,7 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.linkeriyo.cybermanger.databinding.ActivityScanQrBinding;
 import com.linkeriyo.cybermanger.dialogs.QRScannedDialog;
+import com.linkeriyo.cybermanger.dialogs.WriteIdDialog;
 import com.linkeriyo.cybermanger.utilities.Tags;
 
 import java.io.IOException;
@@ -44,6 +45,10 @@ public class ScanQRActivity extends Activity {
         setContentView(binding.getRoot());
 
         binding.btClose.setOnClickListener(v -> finish());
+
+        binding.btWrite.setOnClickListener(v -> {
+            new WriteIdDialog(this).show();
+        });
     }
 
     public void initializeQRReader() {

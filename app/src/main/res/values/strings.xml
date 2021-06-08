@@ -63,4 +63,5 @@
     <string name="confirm_payment">Confirm payment</string>
     <string name="real_price">You will pay %1$s for this purchase.</string>
     <string name="cafe_confirmation">You are buying cybergold for %1$s</string>
+    <string name="business_id">ID</string>
 </resources>
