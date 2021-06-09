@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:subtitle="Cafe name"
-        app:title="Computers" />
+        app:title="@string/computers" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_computers"

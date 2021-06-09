@@ -22,6 +22,9 @@ import com.linkeriyo.cybermanger.utilities.Preferences;
 
 import java.util.ArrayList;
 
+/**
+ * {@link Fragment} showing a {@link CyberCafe}'s info.
+ */
 public class HomeFragment extends Fragment {
 
     FragmentHomeBinding binding;
@@ -30,6 +33,21 @@ public class HomeFragment extends Fragment {
     ArrayList<Post> posts = new ArrayList<>();
     PostsAdapter adapter;
 
+    /**
+     * Initializes the views needed.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return Return the View for the fragment's UI, or null.
+     *
+     * @see Fragment
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,6 +57,14 @@ public class HomeFragment extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * Initializes the views needed.
+     *
+     * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     * @see Fragment
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -64,6 +90,14 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    /**
+     * Executed everytime the {@link HomeFragment} is resumed. Gets the posts by the
+     * selected cafe from the server.
+     *
+     * @see Post
+     * @see CyberCafe
+     * @see Fragment
+     */
     @Override
     public void onResume() {
         super.onResume();

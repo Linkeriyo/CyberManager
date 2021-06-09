@@ -37,7 +37,7 @@
     <string name="couldnt_find_cafe">No se ha podido encontrar el café</string>
     <string name="cafe_removed">Café eliminado</string>
     <string name="cafe_added">Café añadido</string>
-    <string name="welcome_to_cafe">Bienvenido a %!$s!</string>
+    <string name="welcome_to_cafe">¡Bienvenido a %1$s!</string>
     <string name="change_cafe">Cambiar café</string>
     <string name="cafes_posts">Noticias de %1$s</string>
     <string name="no_posts">Este café aún no ha publicado ninguna noticia.</string>
@@ -59,8 +59,10 @@
     <string name="confirm_payment">Confirmar pago</string>
     <string name="real_price">Pagarás %1$s por esta compra</string>
     <string name="cafe_confirmation">Estás comprando Cybergold para %1$s</string>
-    <string name="add_cafe_confirmation">Seguro que quieres añadir este centro?</string>
+    <string name="add_cafe_confirmation">¿Seguro que quieres añadir este centro?</string>
     <string name="add_manually">Añadir ID manualmente</string>
     <string name="input_10">Introduce un ID de 10 caracteres.</string>
     <string name="close">Cerrar</string>
+    <string name="computers">Ordenadores</string>
+    <string name="home">Inicio</string>
 </resources>
