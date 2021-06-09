@@ -57,13 +57,13 @@
     <string name="credit_card">%1$s ending with %2$s</string>
     <string name="unknown_card">Unknown card</string>
     <string name="qr_scanned">QR code scanned</string>
-    <string name="cybergold">Cybergold</string>
+    <string name="cybergold" translatable="false">Cybergold</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
     <string name="confirm_payment">Confirm payment</string>
     <string name="real_price">You will pay %1$s for this purchase.</string>
     <string name="cafe_confirmation">You are buying cybergold for %1$s</string>
-    <string name="business_id">ID</string>
+    <string name="business_id" translatable="false">ID</string>
     <string name="add_cafe_confirmation">Do you really want to add this cafe?</string>
     <string name="add_manually">Add ID manually</string>
     <string name="input_10">Input a 10 character ID.</string>

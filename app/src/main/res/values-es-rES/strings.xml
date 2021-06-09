@@ -53,4 +53,13 @@
     <string name="no_methods">No has añadido ningún método de pago.</string>
     <string name="credit_card">%1$s terminada en %2$s</string>
     <string name="unknown_card">Tarjeta desconocida</string>
+    <string name="qr_scanned">Código QR escaneado</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm_payment">Confirmar pago</string>
+    <string name="real_price">Pagarás %1$s por esta compra</string>
+    <string name="cafe_confirmation">Estás comprando Cybergold para %1$s</string>
+    <string name="add_cafe_confirmation">Seguro que quieres añadir este centro?</string>
+    <string name="add_manually">Añadir ID manualmente</string>
+    <string name="input_10">Introduce un ID de 10 caracteres.</string>
 </resources>
