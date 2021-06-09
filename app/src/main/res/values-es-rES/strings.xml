@@ -62,4 +62,5 @@
     <string name="add_cafe_confirmation">Seguro que quieres añadir este centro?</string>
     <string name="add_manually">Añadir ID manualmente</string>
     <string name="input_10">Introduce un ID de 10 caracteres.</string>
+    <string name="close">Cerrar</string>
 </resources>

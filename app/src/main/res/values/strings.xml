@@ -67,4 +67,5 @@
     <string name="add_cafe_confirmation">Do you really want to add this cafe?</string>
     <string name="add_manually">Add ID manually</string>
     <string name="input_10">Input a 10 character ID.</string>
+    <string name="close">Close</string>
 </resources>
