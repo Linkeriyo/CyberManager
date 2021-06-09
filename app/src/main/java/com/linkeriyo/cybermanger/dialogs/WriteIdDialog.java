@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -57,35 +58,36 @@ public class WriteIdDialog extends Dialog {
             }
         });
 
+        binding.etBusinessId.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
         binding.etBusinessId.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                try {
-                    if (binding.etBusinessId.getText().length() >= 8) {
-                        BusinessRequests.checkBusinessForWriting(
-                                WriteIdDialog.this,
-                                Preferences.getToken(),
-                                binding.etBusinessId.getText().toString()
-                        );
-                    } else {
-                        binding.btAccept.setEnabled(false);
-                        binding.btAccept.setTextColor(getContext().getColor(R.color.colorTextTransparent));
-                    }
-                } catch (NumberFormatException e) {
-                    Log.v(TAG, "Couldn't parse cybergold");
+                if (binding.etBusinessId.getText().length() == 10) {
+                    binding.progressBar.setVisibility(View.VISIBLE);
+                    binding.elementEnterCode.getRoot().setVisibility(View.GONE);
+                    binding.elementCybercafe.getRoot().setVisibility(View.GONE);
+                    binding.elementNoMatch.getRoot().setVisibility(View.GONE);
+                    BusinessRequests.checkBusinessForWriting(
+                            WriteIdDialog.this,
+                            Preferences.getToken(),
+                            binding.etBusinessId.getText().toString()
+                    );
+                } else {
                     binding.btAccept.setEnabled(false);
                     binding.btAccept.setTextColor(getContext().getColor(R.color.colorTextTransparent));
+                    binding.progressBar.setVisibility(View.GONE);
+                    binding.elementEnterCode.getRoot().setVisibility(View.GONE);
+                    binding.elementCybercafe.getRoot().setVisibility(View.GONE);
+                    binding.elementNoMatch.getRoot().setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
     }
