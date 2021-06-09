@@ -12,19 +12,23 @@ import android.view.Window;
 
 import com.bumptech.glide.Glide;
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.activities.ScanQRActivity;
 import com.linkeriyo.cybermanger.databinding.DialogPaymentBinding;
+import com.linkeriyo.cybermanger.databinding.DialogWriteIdBinding;
 import com.linkeriyo.cybermanger.models.CyberCafe;
+import com.linkeriyo.cybermanger.requests.BusinessRequests;
 import com.linkeriyo.cybermanger.requests.PaymentsRequests;
+import com.linkeriyo.cybermanger.requests.UserRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 
 public class WriteIdDialog extends Dialog {
 
     private static final String TAG = "PaymentDialog";
-    private final Activity activity;
-    DialogPaymentBinding binding;
+    private final ScanQRActivity activity;
+    DialogWriteIdBinding binding;
     CyberCafe selectedCafe;
 
-    public WriteIdDialog(Activity activity) {
+    public WriteIdDialog(ScanQRActivity activity) {
         super(activity);
         this.activity = activity;
     }
@@ -37,7 +41,7 @@ public class WriteIdDialog extends Dialog {
 
     private void initLayout() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        binding = DialogPaymentBinding.inflate(getLayoutInflater());
+        binding = DialogWriteIdBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.btCancel.setOnClickListener(v -> {
@@ -46,10 +50,14 @@ public class WriteIdDialog extends Dialog {
         });
 
         binding.btAccept.setOnClickListener(v -> {
+            System.out.println("dialog accepted");
 
+            if (selectedCafe != null) {
+                UserRequests.addCybercafeToUser(this, Preferences.getToken(), selectedCafe);
+            }
         });
 
-        binding.etCybergold.addTextChangedListener(new TextWatcher() {
+        binding.etBusinessId.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -58,11 +66,12 @@ public class WriteIdDialog extends Dialog {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    if (binding.etCybergold.getText().length() >= 8) {
-                        //TODO: comprobar negocio
-
-                        binding.btAccept.setEnabled(true);
-                        binding.btAccept.setTextColor(getContext().getColor(R.color.colorTextPure));
+                    if (binding.etBusinessId.getText().length() >= 8) {
+                        BusinessRequests.checkBusinessForWriting(
+                                WriteIdDialog.this,
+                                Preferences.getToken(),
+                                binding.etBusinessId.getText().toString()
+                        );
                     } else {
                         binding.btAccept.setEnabled(false);
                         binding.btAccept.setTextColor(getContext().getColor(R.color.colorTextTransparent));
@@ -109,5 +118,11 @@ public class WriteIdDialog extends Dialog {
             binding.btAccept.setEnabled(true);
             binding.btAccept.setTextColor(getContext().getColor(R.color.colorTextPure));
         }
+    }
+
+    @Override
+    public void dismiss() {
+        activity.checkAgain();
+        super.dismiss();
     }
 }

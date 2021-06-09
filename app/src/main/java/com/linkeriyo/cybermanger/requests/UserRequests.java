@@ -1,5 +1,6 @@
 package com.linkeriyo.cybermanger.requests;
 
+import android.app.Dialog;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -208,7 +209,7 @@ public class UserRequests {
         });
     }
 
-    public static void addCybercafeToUser(final QRScannedDialog dialog, final String token, final CyberCafe cyberCafe) {
+    public static void addCybercafeToUser(final Dialog dialog, final String token, final CyberCafe cyberCafe) {
         Call<String> call = RetrofitClient.getClient()
                 .create(UserService.class)
                 .addCybercafeToUser(JSONTemplates.createAddCybercafeToUserJSON(token, cyberCafe));
