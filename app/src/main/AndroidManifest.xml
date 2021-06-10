@@ -11,10 +11,10 @@
         android:name=".CyberManager"
         android:allowBackup="false"
         tools:replace="android:allowBackup, android:icon"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/cm_icon"
+        android:roundIcon="@mipmap/cm_icon"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CyberManager">
         <activity android:name=".activities.AddBalanceActivity"></activity>
