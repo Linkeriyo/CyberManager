@@ -34,12 +34,23 @@ public class WriteIdDialog extends Dialog {
         this.activity = activity;
     }
 
+    /**
+     * Similar to <code>Activity.onCreate()</code>, you should initialize your dialog
+     * in this method, including calling {@link #setContentView}.
+     * @param savedInstanceState If this dialog is being reinitialized after a
+     *     the hosting activity was previously shut down, holds the result from
+     *     the most recent call to {@link #onSaveInstanceState}, or null if this
+     *     is the first time.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initLayout();
     }
 
+    /**
+     * Initializes needed views.
+     */
     private void initLayout() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         binding = DialogWriteIdBinding.inflate(getLayoutInflater());
@@ -59,6 +70,8 @@ public class WriteIdDialog extends Dialog {
         });
 
         binding.etBusinessId.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
+
+        //Will watch for any changes into etBusinessId to update all the elements acordingly.
         binding.etBusinessId.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -92,6 +105,11 @@ public class WriteIdDialog extends Dialog {
         });
     }
 
+    /**
+     * Sets the selected cafe and shows it if it is valid.
+     *
+     * @param cyberCafe {@link CyberCafe} to show in the dialog.
+     */
     public void showCyberCafeIfMatched(CyberCafe cyberCafe) {
         binding.progressBar.setVisibility(View.GONE);
 
@@ -122,6 +140,10 @@ public class WriteIdDialog extends Dialog {
         }
     }
 
+    /**
+     * Dismisses the dialog notifying the instance of {@link ScanQRActivity} to scan for QR
+     * over again.
+     */
     @Override
     public void dismiss() {
         activity.checkAgain();

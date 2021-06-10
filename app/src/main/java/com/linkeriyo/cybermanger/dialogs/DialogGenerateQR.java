@@ -1,5 +1,6 @@
 package com.linkeriyo.cybermanger.dialogs;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,27 +15,46 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.linkeriyo.cybermanger.R;
+import com.linkeriyo.cybermanger.activities.SelectCafeActivity;
 import com.linkeriyo.cybermanger.databinding.DialogGenerateQrBinding;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
+/**
+ * Dialog shown when a user wants to share a {@link CyberCafe} when in {@link SelectCafeActivity}.
+ */
 public class DialogGenerateQR extends Dialog {
 
     DialogGenerateQrBinding binding;
     CyberCafe selectedCafe;
 
+    /**
+     * Default constructor.
+     * @param context
+     */
     public DialogGenerateQR(@NonNull Context context) {
         super(context);
     }
 
+    /**
+     * Similar to <code>Activity.onCreate()</code>, you should initialize your dialog
+     * in this method, including calling {@link #setContentView}.
+     * @param savedInstanceState If this dialog is being reinitialized after a
+     *     the hosting activity was previously shut down, holds the result from
+     *     the most recent call to {@link #onSaveInstanceState}, or null if this
+     *     is the first time.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initLayout();
     }
 
+    /**
+     * Initializes needed views.
+     */
     private void initLayout() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         binding = DialogGenerateQrBinding.inflate(getLayoutInflater());

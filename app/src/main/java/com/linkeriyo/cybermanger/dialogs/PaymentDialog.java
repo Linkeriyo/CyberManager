@@ -18,6 +18,7 @@ import com.linkeriyo.cybermanger.databinding.DialogGenerateQrBinding;
 import com.linkeriyo.cybermanger.databinding.DialogPaymentBinding;
 import com.linkeriyo.cybermanger.models.CyberCafe;
 import com.linkeriyo.cybermanger.requests.PaymentsRequests;
+import com.linkeriyo.cybermanger.requests.UserRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 
 import java.text.ParseException;
@@ -33,12 +34,23 @@ public class PaymentDialog extends Dialog {
         this.activity = activity;
     }
 
+    /**
+     * Similar to <code>Activity.onCreate()</code>, you should initialize your dialog
+     * in this method, including calling {@link #setContentView}.
+     * @param savedInstanceState If this dialog is being reinitialized after a
+     *     the hosting activity was previously shut down, holds the result from
+     *     the most recent call to {@link #onSaveInstanceState}, or null if this
+     *     is the first time.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initLayout();
     }
 
+    /**
+     * Initializes needed views.
+     */
     private void initLayout() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         binding = DialogPaymentBinding.inflate(getLayoutInflater());
@@ -89,11 +101,20 @@ public class PaymentDialog extends Dialog {
         });
     }
 
+    /**
+     * Used to notify the dialog when {@link PaymentsRequests#getCybergold(PaymentDialog, String, String, int)}
+     * has finished.
+     */
     public void balanceAdded() {
         dismiss();
         activity.finish();
     }
 
+    /**
+     * Converts Cybergold to EUR.
+     * @param cg Cybergold points to be redeemed.
+     * @return The value in EUR.
+     */
     private String getPriceFromCybergold(int cg) {
         return (cg / 100.0) + "€";
     }
