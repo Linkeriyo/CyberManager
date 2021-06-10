@@ -23,6 +23,10 @@ import com.linkeriyo.cybermanger.utilities.Tags;
 
 import java.io.IOException;
 
+/**
+ * Activity used to scan QR codes and call {@link QRScannedDialog} and {@link WriteIdDialog}
+ * in order to add {@link com.linkeriyo.cybermanger.models.CyberCafe} to the user.
+ */
 public class ScanQRActivity extends Activity {
 
     private static final String TAG = "ScanQRActivity";
@@ -40,6 +44,9 @@ public class ScanQRActivity extends Activity {
         initializeQRReader();
     }
 
+    /**
+     * Initializes needed views.
+     */
     public void initLayout() {
         binding = ActivityScanQrBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -75,6 +82,7 @@ public class ScanQRActivity extends Activity {
                     } catch (ArrayIndexOutOfBoundsException ignored) {
                     }
 
+                    // If a QR has been read, stop reading.
                     if (qrValue != null) {
                         check = false;
                         System.out.println("Leido");

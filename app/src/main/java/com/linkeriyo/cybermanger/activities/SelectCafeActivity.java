@@ -7,11 +7,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.linkeriyo.cybermanger.R;
 import com.linkeriyo.cybermanger.adapters.CybercafesAdapter;
@@ -24,6 +26,9 @@ import com.linkeriyo.cybermanger.utilities.Tags;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * {@link Activity} used to select the {@link CyberCafe} to use for the rest of the app.
+ */
 public class SelectCafeActivity extends Activity {
 
     private static final String TAG = "SelectCafeActivity";
@@ -37,6 +42,9 @@ public class SelectCafeActivity extends Activity {
         initLayout();
     }
 
+    /**
+     * Initializes needed views.
+     */
     private void initLayout() {
         binding = ActivitySelectCafeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -72,17 +80,14 @@ public class SelectCafeActivity extends Activity {
         refreshTextView();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Tags.RQ_SCAN_QR) {
-            Log.v(TAG, "code scanned");
-        } else if (requestCode == Tags.RQ_CAM_PERMISSION) {
-            System.out.println(resultCode);
-
-        }
-    }
-
+    /**
+     * If permissions have been granted, launch {@link ScanQRActivity}
+     * @param requestCode The request code passed in {@link #requestPermissions(String[], int)}.
+     * @param permissions The requested permissions. Never null.
+     * @param grantResults The grant results for the corresponding permissions
+     *     which is either {@link android.content.pm.PackageManager#PERMISSION_GRANTED}
+     *     or {@link android.content.pm.PackageManager#PERMISSION_DENIED}. Never null.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -94,6 +99,9 @@ public class SelectCafeActivity extends Activity {
         }
     }
 
+    /**
+     * Refreshes the {@link TextView} showing that there is no items in the {@link RecyclerView}
+     */
     private void refreshTextView() {
         if (cafes.isEmpty()) {
             binding.tvNoCafes.setVisibility(View.VISIBLE);
@@ -102,6 +110,9 @@ public class SelectCafeActivity extends Activity {
         }
     }
 
+    /**
+     * Gets {@link CyberCafe}s for the user everytime the {@link Activity} is resumed.
+     */
     @Override
     protected void onResume() {
         super.onResume();

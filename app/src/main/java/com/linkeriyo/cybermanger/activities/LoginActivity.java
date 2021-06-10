@@ -7,6 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.linkeriyo.cybermanger.R;
 
+/**
+ * Activity used when the token in {@link android.content.SharedPreferences} is null. Logs
+ * the user in or signs up.
+ * @see com.linkeriyo.cybermanger.fragments.login.LoginFragment
+ * @see com.linkeriyo.cybermanger.fragments.login.SignUpFragment
+ */
 public class LoginActivity extends AppCompatActivity {
 
     @Override

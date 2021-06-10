@@ -5,6 +5,9 @@ import com.linkeriyo.cybermanger.utilities.Tags;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Computers in each {@link CyberCafe}
+ */
 public class Computer {
 
     private String pk;

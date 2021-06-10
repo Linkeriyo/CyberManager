@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
+            // The user comes from LoginActivity, if it is still not logged in, finish activity.
             case Tags.RQ_LOGIN:
                 if (Preferences.getToken() == null) {
                     finish();
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             case Tags.RQ_EXTRA_DATA:
                 userFillingExtraData = false;
                 break;
+
+            // The user comes from SelectCafeActivity, could have decided to change cafe or logout.
             case Tags.RQ_SELECT_CAFE:
                 userSeletingCafe = false;
                 switch (resultCode) {
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        // If the user comes from logging in check their UserExtraData
         if (!userLoggingIn) {
             checkToken();
         } else {
@@ -77,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Checks if the token is registered in {@link android.content.SharedPreferences}
+     */
     private void checkToken() {
         if (Preferences.getToken() == null) {
             startLoginActivity();
@@ -85,10 +92,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Checks if the user has UserExtraData.
+     */
     private void checkUser() {
         UserRequests.checkUserExtraData(this, Preferences.getToken(), Preferences.getUsername());
     }
 
+    /**
+     * Checks if there is a selected cafe.
+     */
     public void checkSelectedCafe() {
         String selectedCafeId = Preferences.getSelectedCafe();
 
@@ -99,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initializes needed views.
+     */
     public void initLayout() {
         if (!layoutInitialized) {
             binding = ActivityMainBinding.inflate(getLayoutInflater());

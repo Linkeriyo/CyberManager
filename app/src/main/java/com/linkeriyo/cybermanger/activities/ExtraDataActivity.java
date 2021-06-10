@@ -10,6 +10,9 @@ import com.linkeriyo.cybermanger.databinding.ActivityExtraDataBinding;
 import com.linkeriyo.cybermanger.requests.UserRequests;
 import com.linkeriyo.cybermanger.utilities.Preferences;
 
+/**
+ * Activity called when the user has no registered UserExtraData in the server.
+ */
 public class ExtraDataActivity extends Activity {
 
     ActivityExtraDataBinding binding;
@@ -20,6 +23,9 @@ public class ExtraDataActivity extends Activity {
         initLayout();
     }
 
+    /**
+     * Initializes needed views.
+     */
     private void initLayout() {
         binding = ActivityExtraDataBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
